@@ -25,7 +25,7 @@ public class MapaTiled extends BasicGame {
     private AppGameContainer container;
     private SpriteSheet spriteD, spriteI, spriteAr, spriteAb;
     private Animation animD, animI, animAr, animAb;
-    private float x = 200.0f, y = 300.0f;
+    private float x = 160.0f, y = 300.0f;
     private boolean derecha = true, dentro = true, arriba = false, izquierda = false, abajo = false;
     private Rectangle homer, rect1, rect2;
     private int i;
