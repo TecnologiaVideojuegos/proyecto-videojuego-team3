@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="40" height="50" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <properties>
+  <property name="name" value="Dungeon of Doom"/>
+  <property name="secretDoors" value="3"/>
+ </properties>
+ <tileset firstgid="1" name="Dungeon" tilewidth="32" tileheight="32" tilecount="90" columns="9">
+  <image source="dungeontiles.gif" width="288" height="320"/>
+ </tileset>
+ <layer name="Layer 0" width="40" height="50">
+  <properties>
+   <property name="monsters" value="harmless"/>
+   <property name="sparks" value="true"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3VQQqAIBSEYS/juo2LbhG46v4nCaFARH0Rr5rF/8EQheBoRiEAmmKVtblXUHpsnSj224N2P/X9s/pFI1592oz6lSzV3KOx2blfb45ZrLV4noen/co1iff7av/yGavXNc7q533+ZkmD5+05fOv7nfW+857/Yu2N0j8ZAAAAAAAAALwcMZKY4UAfAAA=
+  </data>
+ </layer>
+ <layer name="Ebene 1" width="40" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3BAQEAAACAkP6v7ggKAAAAAAAAABhk6EtKQB8AAA==
+  </data>
+ </layer>
+</map>

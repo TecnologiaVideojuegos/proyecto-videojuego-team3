@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.4" orientation="orthogonal" renderorder="right-down" width="76" height="40" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" name="laboratory_tileset____by_sd_arius-d37buur" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+  <image source="laboratory_tileset____by_sd_arius-d37buur.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="257" name="variedad" tilewidth="32" tileheight="32" tilecount="483" columns="23">
+  <image source="variedad.png" width="736" height="672"/>
+ </tileset>
+ <tileset firstgid="740" name="paredes" tilewidth="32" tileheight="32" tilecount="180" columns="20">
+  <image source="paredes.bmp" width="640" height="288"/>
+ </tileset>
+ <tileset firstgid="920" name="lab_tileset" tilewidth="33" tileheight="33" spacing="3" margin="1" tilecount="132" columns="12">
+  <image source="lab_tileset.png" width="432" height="396"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="76" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2XzQrDMAyDC9157/8IfcwdRmGH/kiynaSZBL6M2FI+GsOWxbKsUbStLlf/6v1Nov5H53q8QyVvhu+ovO7OZeVge1t6IbP+gVfFN83kZd+e0queP+qt5FW9P9h50Z2GMmUzmpfGK1M936N51XibVzzPiLwydiCbv8eOVWaZV5wXqlbZ0d/er29l5VeyRPzMS/dT9ERekfcfVcX+YmZVZUH8FD2ZF3vHsx70LkpGxJeZFelHZV46L7R3dl7sDrmTeZlXxj2YLNk+M/JS2c7GK3Lf1u/xTMxZtTeakZ1pXtjM/X+jeWEzr3hF9mZ076pV4WFeeTOta5kXJ/PiVLVHXK7f+gA26hIDgC8AAA==
+  </data>
+ </layer>
+</map>
