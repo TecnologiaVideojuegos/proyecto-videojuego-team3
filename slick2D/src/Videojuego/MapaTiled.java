@@ -6,6 +6,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;*/
+import java.util.ArrayList;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
@@ -29,6 +30,8 @@ public class MapaTiled extends BasicGame {
     private boolean derecha = true, dentro = true, arriba = false, izquierda = false, abajo = false;
     private Rectangle homer, rect1, rect2;
     private int i;
+    private Colisiones col = new Colisiones();
+    private ArrayList coor = new ArrayList();
 
     public MapaTiled() throws SlickException {
         super("PARTE DE ARRIBA DE LA VENTANA");
@@ -61,14 +64,15 @@ public class MapaTiled extends BasicGame {
         animAr = new Animation(spriteAr, 100);
         spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
-        homer = new Rectangle(x, y, animD.getWidth(), animD.getHeight());
+        col.paredes(x, y, animD);
+        /*homer = new Rectangle(x, y, animD.getWidth(), animD.getHeight());
         rect1 = new Rectangle(256 + 17, 160, 160 - 34, 256);
-        rect2 = new Rectangle(128 + 17, 320, 384 - 34, 96);
+        rect2 = new Rectangle(128 + 17, 320, 384 - 34, 96);*/
     }
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-        if (!homer.intersects(rect1) && !homer.intersects(rect2)) {
+        if (col.animDentro()) {
             dentro = false;
             if (i == 6) {
                 x = x - 1;
@@ -90,8 +94,6 @@ public class MapaTiled extends BasicGame {
             abajo = false;
             animD.start();
             x += 100 * (float) delta / 1000;
-            homer.setX(x);
-            homer.setY(y);
             i = 6;
         } else if (container.getInput().isKeyDown(Input.KEY_LEFT) && dentro) {
             derecha = false;
@@ -100,8 +102,6 @@ public class MapaTiled extends BasicGame {
             abajo = false;
             animI.start();
             x -= 100 * (float) delta / 1000;
-            homer.setX(x);
-            homer.setY(y);
             i = 4;
         } else if (container.getInput().isKeyDown(Input.KEY_UP) && dentro) {
             derecha = false;
@@ -110,8 +110,6 @@ public class MapaTiled extends BasicGame {
             abajo = false;
             animAr.start();
             y -= 100 * (float) delta / 1000;
-            homer.setX(x);
-            homer.setY(y);
             i = 8;
         } else if (container.getInput().isKeyDown(Input.KEY_DOWN) && dentro) {
             derecha = false;
@@ -120,8 +118,6 @@ public class MapaTiled extends BasicGame {
             abajo = true;
             animAb.start();
             y += 100 * (float) delta / 1000;
-            homer.setX(x);
-            homer.setY(y);
             i = 2;
         } else {
             animD.stop();
@@ -134,8 +130,9 @@ public class MapaTiled extends BasicGame {
             animAb.setCurrentFrame(1);
         }
 
-        homer.setX(x);
-        homer.setY(y);
+        /*homer.setX(x);
+        homer.setY(y);*/
+        col.actualizar(x, y);
         dentro = true;
     }
 
@@ -159,9 +156,9 @@ public class MapaTiled extends BasicGame {
         }
         g.drawString("Coordenada X:" + x, 100, 10);
         g.drawString("Coordenada Y:" + y, 500, 10);
-        if (homer.intersects(rect1)) {
+        /*if (homer.intersects(rect1)) {
             g.drawString("ESTA DENTRO", 1000, 10);
-        }
+        }*/
         //g.drawRect(homer.getX(), homer.getY(), homer.getWidth(), homer.getHeight());
     }
 
