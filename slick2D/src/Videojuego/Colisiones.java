@@ -11,27 +11,28 @@ import org.newdawn.slick.geom.Rectangle;
 
 /**
  *
- * @author Usuario
+ * @author SergioSanzSacristan
  */
 public class Colisiones {
 
-    private Rectangle rect1, rect2, rectAnim;
+    private Rectangle rect1, rect2, rect3, rectAnim;
 
     public void paredes(float x, float y, Animation anim) {
         rectAnim = new Rectangle(x, y, anim.getWidth(), anim.getHeight());
-        rect1 = new Rectangle(256 + 17, 160, 160 - 34, 256);
-        rect2 = new Rectangle(128 + 17, 320, 384 - 34, 96);
+        rect1 = new Rectangle(48 + 17, 288, 110, 21);
+        rect2 = new Rectangle(144 + 17, 288, 14, 293);
+        rect3 = new Rectangle(32 + 17, 560, 1118, 21);
     }
 
     public boolean caminos(boolean dentro) {
-        if (!rectAnim.intersects(rect1) && !rectAnim.intersects(rect2)) {
+        if (!rectAnim.intersects(rect1) && !rectAnim.intersects(rect2) && !rectAnim.intersects(rect3)) {
             dentro = false;
         }
         return dentro;
     }
 
     public boolean animDentro() {
-        if (!rectAnim.intersects(rect1) && !rectAnim.intersects(rect2)) {
+        if (!rectAnim.intersects(rect1) && !rectAnim.intersects(rect2) && !rectAnim.intersects(rect3)) {
             return true;
         } else {
             return false;
