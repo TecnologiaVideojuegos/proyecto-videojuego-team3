@@ -1,15 +1,7 @@
 package Videojuego;
 
-/*import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;*/
-import java.util.ArrayList;
 import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Rectangle;
 
 /**
  * A test of the tile map system based around the TilED
@@ -26,12 +18,11 @@ public class MapaTiled extends BasicGame {
     private AppGameContainer container;
     private SpriteSheet spriteD, spriteI, spriteAr, spriteAb;
     private Animation animD, animI, animAr, animAb;
-    private float x = 49f, y = 288.0f;
+    private float x = 49f, y = 288f;
     private boolean derecha = true, dentro = true, arriba = false, izquierda = false, abajo = false;
-    private Rectangle homer, rect1, rect2;
     private int i;
     private Colisiones col = new Colisiones();
-    private ArrayList coor = new ArrayList();
+    private boolean[][] obstaculo;
 
     public MapaTiled() throws SlickException {
         super("PARTE DE ARRIBA DE LA VENTANA");
@@ -64,15 +55,25 @@ public class MapaTiled extends BasicGame {
         animAr = new Animation(spriteAr, 100);
         spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
-        col.paredes(x, y, animD);
-        /*homer = new Rectangle(x, y, animD.getWidth(), animD.getHeight());
-        rect1 = new Rectangle(256 + 17, 160, 160 - 34, 256);
-        rect2 = new Rectangle(128 + 17, 320, 384 - 34, 96);*/
+        //col.paredes(x, y, animD);
+        int totalTilesWidth = mapa.getWidth() * 2;
+        int totalTilesHeight = mapa.getHeight() * 2;
+        obstaculo = new boolean[totalTilesWidth][totalTilesHeight];
+        for (int i = 0; i < totalTilesWidth; i++) {
+            //System.out.println("F:" + i + " ");
+            for (int j = 0; j < totalTilesHeight; j++) {
+                obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0));
+                //System.out.println(obstaculo[i][j]);
+            }
+            //System.out.println(" ");
+        }
     }
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-        if (col.animDentro()) {
+        //if (col.animDentro()) {
+        if (col.animDentro(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
                 x = x - 1;
@@ -130,9 +131,7 @@ public class MapaTiled extends BasicGame {
             animAb.setCurrentFrame(1);
         }
 
-        /*homer.setX(x);
-        homer.setY(y);*/
-        col.actualizar(x, y);
+        //col.actualizar(x, y);
         dentro = true;
     }
 
@@ -141,6 +140,7 @@ public class MapaTiled extends BasicGame {
 
         g.scale(0.5f, 0.5f);
         mapa.render(0, 0);
+        //System.out.println(mapa.getLayerIndex("Capa de patrones 2"));
         g.resetTransform();
         if (derecha) {
             animD.draw(x, y);
