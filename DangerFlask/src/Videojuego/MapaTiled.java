@@ -46,7 +46,7 @@ public class MapaTiled extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
 
-        mapa = new TiledMap("./juego/mapa_final1.tmx", "juego");
+        mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
         spriteD = new SpriteSheet("./juego/animD.png", 16, 25);
         animD = new Animation(spriteD, 100);
         spriteI = new SpriteSheet("./juego/animI.png", 16, 25);
@@ -55,18 +55,14 @@ public class MapaTiled extends BasicGame {
         animAr = new Animation(spriteAr, 100);
         spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
-        //col.paredes(x, y, animD);
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
         obstaculo = new boolean[totalTilesWidth][totalTilesHeight];
         for (int i = 0; i < totalTilesWidth; i++) {
-            //System.out.println("F:" + i + " ");
             for (int j = 0; j < totalTilesHeight; j++) {
                 obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0));
-                //System.out.println(obstaculo[i][j]);
             }
-            //System.out.println(" ");
         }
     }
 
