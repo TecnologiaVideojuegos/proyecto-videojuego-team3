@@ -8,7 +8,7 @@ import java.nio.ByteOrder;
 import org.lwjgl.BufferUtils;
 import org.newdawn.slick.util.Log;
 
-import com.jcraft.jogg.Packet;
+import com.sun.xml.internal.ws.api.message.Packet;
 import com.jcraft.jogg.Page;
 import com.jcraft.jogg.StreamState;
 import com.jcraft.jogg.SyncState;
