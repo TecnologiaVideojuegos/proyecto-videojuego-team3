@@ -4,10 +4,8 @@ import org.newdawn.slick.tiled.TiledMap;
 import org.newdawn.slick.*;
 
 /**
- * A test of the tile map system based around the TilED
- * (http://www.mapeditor.org) tool
  *
- * @author kevin
+ * @author SergioSanzSacristan
  */
 public class MapaTiled extends BasicGame {
 
