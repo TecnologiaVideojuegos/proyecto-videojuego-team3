@@ -12,7 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Principal extends StateBasedGame {
 
     private AppGameContainer container;
-    private Vidas vidas = new Vidas(1);
+    private Vidas vidas = new Vidas(6);
 
     public Principal() throws SlickException {
         super("Danger Flask");

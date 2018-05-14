@@ -1781,4 +1781,8 @@ public class Graphics {
     public void drawString(float x, float x0, float y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void draw(SpriteSheet v1, int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -165,6 +165,10 @@ public class SpriteSheet extends Image {
 		this.tw = tw;
 		this.th = th;
 	}
+
+    public SpriteSheet(Image i1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	/**
 	 * @see org.newdawn.slick.Image#initImpl()
