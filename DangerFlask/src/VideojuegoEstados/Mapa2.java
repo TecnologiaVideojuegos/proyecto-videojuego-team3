@@ -1,11 +1,8 @@
 package VideojuegoEstados;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
@@ -17,13 +14,13 @@ import org.newdawn.slick.tiled.TiledMap;
 public class Mapa2 extends BasicGameState {
 
     private TiledMap mapa;
-    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb;
-    private Animation animD, animI, animAr, animAb;
     private float x = 34f, y = 483f;
-    private boolean derecha = true, dentro = true, arriba = false, izquierda = false, abajo = false;
+    private boolean dentro = true;
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
+    private Personajes personaje = new Personajes();
+    private LimitesMapa limiteMapa = new LimitesMapa();
 
     public Mapa2() {
 
@@ -32,25 +29,8 @@ public class Mapa2 extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.1.tmx", "juego");
-        spriteD = new SpriteSheet("./juego/animD.png", 16, 25);
-        animD = new Animation(spriteD, 100);
-        spriteI = new SpriteSheet("./juego/animI.png", 16, 25);
-        animI = new Animation(spriteI, 100);
-        spriteAr = new SpriteSheet("./juego/animAr.png", 17, 27);
-        animAr = new Animation(spriteAr, 100);
-        spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
-        animAb = new Animation(spriteAb, 100);
-        int totalTilesWidth = mapa.getWidth() * 2;
-        int totalTilesHeight = mapa.getHeight() * 2;
-        obstaculo = new boolean[totalTilesWidth][totalTilesHeight];
-        for (int i = 0; i < totalTilesWidth; i++) {
-            for (int j = 0; j < totalTilesHeight; j++) {
-                obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra1")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de Patrones 1")) != 0));
-            }
-        }
+        personaje.iniciarPers();
+        limiteMapa.crearLimite2(mapa);
     }
 
     @Override
@@ -59,18 +39,7 @@ public class Mapa2 extends BasicGameState {
         g.scale(0.5f, 0.5f);
         mapa.render(0, 0);
         g.resetTransform();
-        if (derecha) {
-            animD.draw(x, y);
-        }
-        if (izquierda) {
-            animI.draw(x, y);
-        }
-        if (arriba) {
-            animAr.draw(x, y);
-        }
-        if (abajo) {
-            animAb.draw(x, y);
-        }
+        personaje.dibujarPers(x, y);
         g.drawString("Coordenada X:" + x, 100, 10);
         g.drawString("Coordenada Y:" + y, 500, 10);
         col.dibujar(g);
@@ -93,49 +62,10 @@ public class Mapa2 extends BasicGameState {
                 y = y + 1;
             }
         }
-        if (container.getInput().isKeyDown(Input.KEY_RIGHT) && dentro) {
-            derecha = true;
-            arriba = false;
-            izquierda = false;
-            abajo = false;
-            animD.start();
-            x += 100 * (float) delta / 1000;
-            i = 6;
-        } else if (container.getInput().isKeyDown(Input.KEY_LEFT) && dentro) {
-            derecha = false;
-            arriba = false;
-            izquierda = true;
-            abajo = false;
-            animI.start();
-            x -= 100 * (float) delta / 1000;
-            i = 4;
-        } else if (container.getInput().isKeyDown(Input.KEY_UP) && dentro) {
-            derecha = false;
-            arriba = true;
-            izquierda = false;
-            abajo = false;
-            animAr.start();
-            y -= 100 * (float) delta / 1000;
-            i = 8;
-        } else if (container.getInput().isKeyDown(Input.KEY_DOWN) && dentro) {
-            derecha = false;
-            arriba = false;
-            izquierda = false;
-            abajo = true;
-            animAb.start();
-            y += 100 * (float) delta / 1000;
-            i = 2;
-        } else {
-            animD.stop();
-            animI.stop();
-            animAr.stop();
-            animAb.stop();
-            animD.setCurrentFrame(1);
-            animI.setCurrentFrame(1);
-            animAr.setCurrentFrame(1);
-            animAb.setCurrentFrame(1);
-        }
-
+        i = personaje.movimiento(dentro, x, y, container, delta);
+        x = personaje.getX();
+        y = personaje.getY();
+        col.actualizar(x, y);
         col.actualizar(x, y);
         if (col.cambiarMapa2()) {
             game.enterState(2);
