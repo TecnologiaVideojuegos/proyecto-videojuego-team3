@@ -8,11 +8,11 @@ import org.newdawn.slick.SpriteSheet;
 
 public class Personajes {
 
-    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI;
-    private Animation animD, animI, animAr, animAb, animBabD, animBabI;
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, babD = true;
+    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI, spriteBabAr, spriteBabAb, spriteBabD2, spriteBabI2;
+    private Animation animD, animI, animAr, animAb, animBabD, animBabI, animBabAr, animBabAb, animBabD2, animBabI2;
+    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, bab1 = true, bab2 = true;
     private int i = 6;
-    private float x_, y_, j = 96;
+    private float x_, y_, j = 96, a = 304, b, c, d, e;
     private Colisiones col;
 
     public Personajes(Colisiones col) {
@@ -44,10 +44,17 @@ public class Personajes {
         animAr = new Animation(spriteAr, 100);
         spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
+    }
+
+    public void iniciarEnem1() throws SlickException {
         spriteBabD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
         animBabD = new Animation(spriteBabD, 250);
         spriteBabI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
         animBabI = new Animation(spriteBabI, 250);
+        spriteBabAr = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 25, 15);
+        animBabAr = new Animation(spriteBabAr, 250);
+        spriteBabAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 25, 15);
+        animBabAb = new Animation(spriteBabAb, 250);
     }
 
     public void dibujarPers(float x, float y) {
@@ -65,12 +72,18 @@ public class Personajes {
         }
     }
 
-    public void dibujarEnem() {
-        if (babD) {
+    public void dibujarEnem1() {
+        if (bab1) {
             animBabD.draw(j, 576);
         }
-        if (!babD) {
+        if (!bab1) {
             animBabI.draw(j, 576);
+        }
+        if (bab2) {
+            animBabI.draw(a, 224);
+        }
+        if (!bab2) {
+            animBabD.draw(a, 224);
         }
     }
 
@@ -127,18 +140,35 @@ public class Personajes {
         }
     }
 
-    public void movimientoEnem(int delta) {
-        if (j < 288 && babD) {
+    public void movimientoEnem1(int delta) {
+        if (bab1) {
             animBabD.start();
             j += 10 * (float) delta / 1000;
             col.setJ(j);
+            if (j > 288) {
+                bab1 = false;
+            }
         } else {
-            babD = false;
             animBabI.start();
             j -= 10 * (float) delta / 1000;
             col.setJ(j);
             if (j < 96) {
-                babD = true;
+                bab1 = true;
+            }
+        }
+        if (bab2) {
+            animBabI.start();
+            a -= 10 * (float) delta / 1000;
+            col.setA(a);
+            if (a < 112) {
+                bab2 = false;
+            }
+        } else {
+            animBabD.start();
+            a += 10 * (float) delta / 1000;
+            col.setA(a);
+            if (a > 304) {
+                bab2 = true;
             }
         }
     }

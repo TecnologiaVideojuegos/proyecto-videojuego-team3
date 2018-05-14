@@ -9,19 +9,35 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Colisiones {
 
-    private float x_, y_, j = 96;
+    private float x_, y_, j = 96, a = 304, b, c, d, e;
 
     public Colisiones(float x, float y) {
         this.x_ = x;
         this.y_ = y;
     }
 
-    public float getJ() {
-        return j;
-    }
-
     public void setJ(float j) {
         this.j = j;
+    }
+
+    public void setA(float a) {
+        this.a = a;
+    }
+
+    public void setB(float b) {
+        this.b = b;
+    }
+
+    public void setC(float c) {
+        this.c = c;
+    }
+
+    public void setD(float d) {
+        this.d = d;
+    }
+
+    public void setE(float e) {
+        this.e = e;
     }
 
     private Rectangle rectSalida1 = new Rectangle(1167, 495, 50, 25);
@@ -33,10 +49,11 @@ public class Colisiones {
     private Rectangle cambiarMapa3 = new Rectangle(336, 638, 45, 1);
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
     private Rectangle rectAnim = new Rectangle(x_, y_, 16, 27);
-    private Rectangle rectBabosa;
+    private Rectangle rectBab1, rectBab2;
 
     public void colisiones1() {
-        rectBabosa = new Rectangle(j, 576, 25, 15);
+        rectBab1 = new Rectangle(j, 576, 25, 15);
+        rectBab2 = new Rectangle(a, 224, 25, 15);
     }
 
     public boolean animDentro1(boolean[][] paredes, float x, float y) {
@@ -93,7 +110,8 @@ public class Colisiones {
     }
 
     public void actualizarBab() {
-        rectBabosa.setX(j);
+        rectBab1.setX(j);
+        rectBab2.setX(a);
     }
 
     public void dibujar(Graphics g) {
@@ -136,7 +154,7 @@ public class Colisiones {
     }
 
     public boolean muere() {
-        if (rectAnim.intersects(rectBabosa)) {
+        if (rectAnim.intersects(rectBab1) || rectAnim.intersects(rectBab2)) {
             return true;
         } else {
             return false;

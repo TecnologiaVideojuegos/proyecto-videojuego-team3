@@ -37,6 +37,7 @@ public class Mapa1 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
         personaje.iniciarPers();
+        personaje.iniciarEnem1();
         obstaculo = limiteMapa.crearLimite1(mapa);
         col.colisiones1();
     }
@@ -48,7 +49,7 @@ public class Mapa1 extends BasicGameState {
         mapa.render(0, 0);
         g.resetTransform();
         personaje.dibujarPers(x, y);
-        personaje.dibujarEnem();
+        personaje.dibujarEnem1();
         vidas.dibujar(g);
         //g.drawString("Coordenada X:" + x, 100, 10);
         //g.drawString("Coordenada Y:" + y, 500, 10);
@@ -73,7 +74,7 @@ public class Mapa1 extends BasicGameState {
             }
         }
         i = personaje.movimiento(dentro, x, y, container, delta);
-        personaje.movimientoEnem(delta);
+        personaje.movimientoEnem1(delta);
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
