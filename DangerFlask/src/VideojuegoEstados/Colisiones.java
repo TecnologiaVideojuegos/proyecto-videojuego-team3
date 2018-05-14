@@ -36,7 +36,7 @@ public class Colisiones {
     private Rectangle rectBabosa;
 
     public void colisiones1() {
-        rectBabosa = new Rectangle(j, 208, 25, 15);
+        rectBabosa = new Rectangle(j, 576, 25, 15);
     }
 
     public boolean animDentro1(boolean[][] paredes, float x, float y) {
@@ -90,13 +90,16 @@ public class Colisiones {
     public void actualizar(float x, float y) {
         rectAnim.setX(x);
         rectAnim.setY(y);
+    }
+
+    public void actualizarBab() {
         rectBabosa.setX(j);
     }
 
     public void dibujar(Graphics g) {
-        g.drawRect(rectAnim.getX(), rectAnim.getY(), rectAnim.getWidth(), rectAnim.getHeight());
-        g.drawRect(cambiarMapa2.getX(), cambiarMapa2.getY(), cambiarMapa2.getWidth(), cambiarMapa2.getHeight());
-        g.drawRect(rectBabosa.getX(), rectBabosa.getY(), rectBabosa.getWidth(), rectBabosa.getHeight());
+        //g.drawRect(rectAnim.getX(), rectAnim.getY(), rectAnim.getWidth(), rectAnim.getHeight());
+        //g.drawRect(cambiarMapa2.getX(), cambiarMapa2.getY(), cambiarMapa2.getWidth(), cambiarMapa2.getHeight());
+        //g.drawRect(rectBabosa.getX(), rectBabosa.getY(), rectBabosa.getWidth(), rectBabosa.getHeight());
 
     }
 

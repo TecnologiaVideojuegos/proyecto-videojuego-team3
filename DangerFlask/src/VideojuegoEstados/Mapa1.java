@@ -5,6 +5,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.state.transition.RotateTransition;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
@@ -21,9 +24,13 @@ public class Mapa1 extends BasicGameState {
     private boolean[][] obstaculo;
     private Personajes personaje = new Personajes(col);
     private LimitesMapa limiteMapa = new LimitesMapa();
+    private Vidas vidas;
+    private RotateTransition rota = new RotateTransition();
+    private FadeInTransition entra = new FadeInTransition();
+    private FadeOutTransition sale = new FadeOutTransition();
 
-    public Mapa1() {
-
+    public Mapa1(Vidas vidas) {
+        this.vidas = vidas;
     }
 
     @Override
@@ -42,8 +49,9 @@ public class Mapa1 extends BasicGameState {
         g.resetTransform();
         personaje.dibujarPers(x, y);
         personaje.dibujarEnem();
-        g.drawString("Coordenada X:" + x, 100, 10);
-        g.drawString("Coordenada Y:" + y, 500, 10);
+        vidas.dibujar(g);
+        //g.drawString("Coordenada X:" + x, 100, 10);
+        //g.drawString("Coordenada Y:" + y, 500, 10);
         col.dibujar(g);
     }
 
@@ -69,9 +77,14 @@ public class Mapa1 extends BasicGameState {
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
+        col.actualizarBab();
         if (col.muere()) {
             x = 49;
             y = 288;
+            vidas.setVidas(vidas.getVidas() - 1);
+            if (vidas.getVidas() == 0) {
+                game.enterState(4, entra, sale);
+            }
         }
         if (col.cambiarMapa1()) {
             game.enterState(1);

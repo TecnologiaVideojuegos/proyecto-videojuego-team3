@@ -21,9 +21,10 @@ public class Mapa3 extends BasicGameState {
     private boolean[][] obstaculo;
     private Personajes personaje = new Personajes(col);
     private LimitesMapa limiteMapa = new LimitesMapa();
+    private Vidas vidas;
 
-    public Mapa3() {
-
+    public Mapa3(Vidas vidas) {
+        this.vidas = vidas;
     }
 
     @Override

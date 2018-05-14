@@ -67,10 +67,10 @@ public class Personajes {
 
     public void dibujarEnem() {
         if (babD) {
-            animBabD.draw(j, 208);
+            animBabD.draw(j, 576);
         }
         if (!babD) {
-            animBabI.draw(j, 208);
+            animBabI.draw(j, 576);
         }
     }
 
