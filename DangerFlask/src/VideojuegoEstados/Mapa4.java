@@ -19,7 +19,7 @@ public class Mapa4 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes();
+    private Personajes personaje = new Personajes(col);
     private LimitesMapa limiteMapa = new LimitesMapa();
 
     public Mapa4() {
@@ -30,7 +30,7 @@ public class Mapa4 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.2.tmx", "juego");
         personaje.iniciarPers();
-        limiteMapa.crearLimite4(mapa);
+        obstaculo = limiteMapa.crearLimite4(mapa);
     }
 
     @Override

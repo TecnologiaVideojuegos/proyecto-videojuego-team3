@@ -19,7 +19,7 @@ public class Mapa1 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes();
+    private Personajes personaje = new Personajes(col);
     private LimitesMapa limiteMapa = new LimitesMapa();
 
     public Mapa1() {
@@ -31,15 +31,7 @@ public class Mapa1 extends BasicGameState {
         mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
         personaje.iniciarPers();
         obstaculo = limiteMapa.crearLimite1(mapa);
-//        int totalTilesWidth = mapa.getWidth() * 2;
-//        int totalTilesHeight = mapa.getHeight() * 2;
-//        obstaculo = new boolean[totalTilesWidth][totalTilesHeight];
-//        for (int i = 0; i < totalTilesWidth; i++) {
-//            for (int j = 0; j < totalTilesHeight; j++) {
-//                obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-//                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0));
-//            }
-//        }
+        col.colisiones1();
     }
 
     @Override
@@ -49,6 +41,7 @@ public class Mapa1 extends BasicGameState {
         mapa.render(0, 0);
         g.resetTransform();
         personaje.dibujarPers(x, y);
+        personaje.dibujarEnem();
         g.drawString("Coordenada X:" + x, 100, 10);
         g.drawString("Coordenada Y:" + y, 500, 10);
         col.dibujar(g);
@@ -72,9 +65,14 @@ public class Mapa1 extends BasicGameState {
             }
         }
         i = personaje.movimiento(dentro, x, y, container, delta);
+        personaje.movimientoEnem(delta);
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
+        if (col.muere()) {
+            x = 49;
+            y = 288;
+        }
         if (col.cambiarMapa1()) {
             game.enterState(1);
         }

@@ -9,12 +9,21 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Colisiones {
 
-    private float x_, y_;
+    private float x_, y_, j = 96;
 
     public Colisiones(float x, float y) {
         this.x_ = x;
         this.y_ = y;
     }
+
+    public float getJ() {
+        return j;
+    }
+
+    public void setJ(float j) {
+        this.j = j;
+    }
+
     private Rectangle rectSalida1 = new Rectangle(1167, 495, 50, 25);
     private Rectangle rectSalida2 = new Rectangle(1167, 270, 50, 25);
     private Rectangle rectSalida3 = new Rectangle(335, 592, 50, 50);
@@ -24,6 +33,11 @@ public class Colisiones {
     private Rectangle cambiarMapa3 = new Rectangle(336, 638, 45, 1);
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
     private Rectangle rectAnim = new Rectangle(x_, y_, 16, 27);
+    private Rectangle rectBabosa;
+
+    public void colisiones1() {
+        rectBabosa = new Rectangle(j, 208, 25, 15);
+    }
 
     public boolean animDentro1(boolean[][] paredes, float x, float y) {
         if (((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
@@ -76,11 +90,13 @@ public class Colisiones {
     public void actualizar(float x, float y) {
         rectAnim.setX(x);
         rectAnim.setY(y);
+        rectBabosa.setX(j);
     }
 
     public void dibujar(Graphics g) {
         g.drawRect(rectAnim.getX(), rectAnim.getY(), rectAnim.getWidth(), rectAnim.getHeight());
         g.drawRect(cambiarMapa2.getX(), cambiarMapa2.getY(), cambiarMapa2.getWidth(), cambiarMapa2.getHeight());
+        g.drawRect(rectBabosa.getX(), rectBabosa.getY(), rectBabosa.getWidth(), rectBabosa.getHeight());
 
     }
 
@@ -110,6 +126,14 @@ public class Colisiones {
 
     public boolean cambiarMapa4() {
         if (rectAnim.intersects(cambiarMapa4)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean muere() {
+        if (rectAnim.intersects(rectBabosa)) {
             return true;
         } else {
             return false;

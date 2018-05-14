@@ -5,18 +5,18 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
-import org.newdawn.slick.state.StateBasedGame;
 
 public class Personajes {
 
-    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb;
-    private Animation animD, animI, animAr, animAb;
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false;
+    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI;
+    private Animation animD, animI, animAr, animAb, animBabD, animBabI;
+    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, babD = true;
     private int i = 6;
-    private float x_, y_;
+    private float x_, y_, j = 96;
+    private Colisiones col;
 
-    public Personajes() {
-
+    public Personajes(Colisiones col) {
+        this.col = col;
     }
 
     public float getX() {
@@ -44,6 +44,10 @@ public class Personajes {
         animAr = new Animation(spriteAr, 100);
         spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
+        spriteBabD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
+        animBabD = new Animation(spriteBabD, 250);
+        spriteBabI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
+        animBabI = new Animation(spriteBabI, 250);
     }
 
     public void dibujarPers(float x, float y) {
@@ -61,9 +65,19 @@ public class Personajes {
         }
     }
 
+    public void dibujarEnem() {
+        if (babD) {
+            animBabD.draw(j, 208);
+        }
+        if (!babD) {
+            animBabI.draw(j, 208);
+        }
+    }
+
     public int movimiento(boolean dentro, float x, float y, GameContainer container, int delta) {
         x_ = x;
         y_ = y;
+
         if (container.getInput().isKeyDown(Input.KEY_RIGHT) && dentro) {
             derecha = true;
             arriba = false;
@@ -110,6 +124,22 @@ public class Personajes {
             animAr.setCurrentFrame(1);
             animAb.setCurrentFrame(1);
             return i;
+        }
+    }
+
+    public void movimientoEnem(int delta) {
+        if (j < 288 && babD) {
+            animBabD.start();
+            j += 10 * (float) delta / 1000;
+            col.setJ(j);
+        } else {
+            babD = false;
+            animBabI.start();
+            j -= 10 * (float) delta / 1000;
+            col.setJ(j);
+            if (j < 96) {
+                babD = true;
+            }
         }
     }
 }
