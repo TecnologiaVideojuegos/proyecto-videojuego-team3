@@ -11,9 +11,9 @@ public class Personajes {
     private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI, spriteBabAr, spriteBabAb, spriteBabD2, spriteBabI2;
     private Animation animD, animI, animAr, animAb, animBabD, animBabI, animBabAr, animBabAb, animBabD2, animBabI2;
     private boolean derecha = true, arriba = false, izquierda = false, abajo = false, bab1 = true, bab2 = true, bab3 = true,
-            bab4 = true;
+            bab4 = true, bab5 = true, bab6 = true;
     private int i = 6;
-    private float x_, y_, j = 96, a = 304, b = 416, c = 368, d, e;
+    private float x_, y_, j = 96, a = 304, b = 416, c = 368, d = 544, e = 400;
     private Colisiones col;
 
     public Personajes(Colisiones col) {
@@ -97,6 +97,18 @@ public class Personajes {
         }
         if (!bab4) {
             animBabAr.draw(656, c);
+        }
+        if (bab5) {
+            animBabAb.draw(816, d);
+        }
+        if (!bab5) {
+            animBabAr.draw(816, d);
+        }
+        if (bab6) {
+            animBabAr.draw(816, e);
+        }
+        if (!bab6) {
+            animBabAb.draw(816, e);
         }
     }
 
@@ -212,6 +224,36 @@ public class Personajes {
             col.setC(c);
             if (c < 368) {
                 bab4 = true;
+            }
+        }
+        if (bab5) {
+            animBabAb.start();
+            d += 10 * (float) delta / 1000;
+            col.setD(d);
+            if (d > 592) {
+                bab5 = false;
+            }
+        } else {
+            animBabAr.start();
+            d -= 10 * (float) delta / 1000;
+            col.setD(d);
+            if (d < 544) {
+                bab5 = true;
+            }
+        }
+        if (bab6) {
+            animBabAr.start();
+            e -= 10 * (float) delta / 1000;
+            col.setE(e);
+            if (e < 320) {
+                bab6 = false;
+            }
+        } else {
+            animBabAb.start();
+            e += 10 * (float) delta / 1000;
+            col.setE(e);
+            if (e > 400) {
+                bab6 = true;
             }
         }
     }
