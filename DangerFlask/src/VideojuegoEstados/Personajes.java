@@ -10,9 +10,10 @@ public class Personajes {
 
     private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI, spriteBabAr, spriteBabAb, spriteBabD2, spriteBabI2;
     private Animation animD, animI, animAr, animAb, animBabD, animBabI, animBabAr, animBabAb, animBabD2, animBabI2;
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, bab1 = true, bab2 = true;
+    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, bab1 = true, bab2 = true, bab3 = true,
+            bab4 = true;
     private int i = 6;
-    private float x_, y_, j = 96, a = 304, b, c, d, e;
+    private float x_, y_, j = 96, a = 304, b = 416, c = 368, d, e;
     private Colisiones col;
 
     public Personajes(Colisiones col) {
@@ -51,9 +52,9 @@ public class Personajes {
         animBabD = new Animation(spriteBabD, 250);
         spriteBabI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
         animBabI = new Animation(spriteBabI, 250);
-        spriteBabAr = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 25, 15);
+        spriteBabAr = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 14, 23);
         animBabAr = new Animation(spriteBabAr, 250);
-        spriteBabAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 25, 15);
+        spriteBabAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_abajo.png", 15, 22);
         animBabAb = new Animation(spriteBabAb, 250);
     }
 
@@ -84,6 +85,18 @@ public class Personajes {
         }
         if (!bab2) {
             animBabD.draw(a, 224);
+        }
+        if (bab3) {
+            animBabD.draw(b, 496);
+        }
+        if (!bab3) {
+            animBabI.draw(b, 496);
+        }
+        if (bab4) {
+            animBabAb.draw(656, c);
+        }
+        if (!bab4) {
+            animBabAr.draw(656, c);
         }
     }
 
@@ -169,6 +182,36 @@ public class Personajes {
             col.setA(a);
             if (a > 304) {
                 bab2 = true;
+            }
+        }
+        if (bab3) {
+            animBabD.start();
+            b += 10 * (float) delta / 1000;
+            col.setB(b);
+            if (b > 576) {
+                bab3 = false;
+            }
+        } else {
+            animBabI.start();
+            b -= 10 * (float) delta / 1000;
+            col.setB(b);
+            if (b < 416) {
+                bab3 = true;
+            }
+        }
+        if (bab4) {
+            animBabAb.start();
+            c += 10 * (float) delta / 1000;
+            col.setC(c);
+            if (c > 416) {
+                bab4 = false;
+            }
+        } else {
+            animBabAr.start();
+            c -= 10 * (float) delta / 1000;
+            col.setC(c);
+            if (c < 368) {
+                bab4 = true;
             }
         }
     }
