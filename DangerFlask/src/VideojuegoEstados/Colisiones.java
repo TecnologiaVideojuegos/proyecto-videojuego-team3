@@ -9,7 +9,8 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Colisiones {
 
-    private float x_, y_, j = 96, a = 304, b = 416, c, d, e;
+    private float x_, y_, j, a, b, c, d, e;
+    private int tarjeta1 = 0, tarjeta2 = 0, tarjeta3 = 0, tarjeta4 = 0;
 
     public Colisiones(float x, float y) {
         this.x_ = x;
@@ -40,6 +41,38 @@ public class Colisiones {
         this.e = e;
     }
 
+    public int getTarjeta1() {
+        return tarjeta1;
+    }
+
+    public int getTarjeta2() {
+        return tarjeta2;
+    }
+
+    public int getTarjeta3() {
+        return tarjeta3;
+    }
+
+    public int getTarjeta4() {
+        return tarjeta4;
+    }
+
+    public void setTarjeta1(int tarjeta1) {
+        this.tarjeta1 = tarjeta1;
+    }
+
+    public void setTarjeta2(int tarjeta2) {
+        this.tarjeta2 = tarjeta2;
+    }
+
+    public void setTarjeta3(int tarjeta3) {
+        this.tarjeta3 = tarjeta3;
+    }
+
+    public void setTarjeta4(int tarjeta4) {
+        this.tarjeta4 = tarjeta4;
+    }
+
     private Rectangle rectSalida1 = new Rectangle(1167, 495, 50, 25);
     private Rectangle rectSalida2 = new Rectangle(1167, 270, 50, 25);
     private Rectangle rectSalida3 = new Rectangle(335, 592, 50, 50);
@@ -50,6 +83,10 @@ public class Colisiones {
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
     private Rectangle rectAnim = new Rectangle(x_, y_, 16, 27);
     private Rectangle rectBab1, rectBab2, rectBab3, rectBab4, rectBab5, rectBab6;
+
+    public Rectangle getRectAnim() {
+        return rectAnim;
+    }
 
     public void colisiones1() {
         rectBab1 = new Rectangle(j, 576, 25, 15);
@@ -62,7 +99,8 @@ public class Colisiones {
 
     public boolean animDentro1(boolean[][] paredes, float x, float y) {
         if (((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
-                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida1)) {
+                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida1)
+                && tarjeta1 == 2) {
             return false;
         } else if ((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
                 || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) {

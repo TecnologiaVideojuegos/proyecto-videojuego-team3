@@ -25,6 +25,7 @@ public class Mapa1 extends BasicGameState {
     private Personajes personaje = new Personajes(col);
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
+    private Objetos obj = new Objetos(col);
     private RotateTransition rota = new RotateTransition();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
@@ -40,6 +41,8 @@ public class Mapa1 extends BasicGameState {
         personaje.iniciarEnem1();
         obstaculo = limiteMapa.crearLimite1(mapa);
         col.colisiones1();
+        obj.creaObjetos();
+        obj.colObj1();
     }
 
     @Override
@@ -51,9 +54,9 @@ public class Mapa1 extends BasicGameState {
         personaje.dibujarPers(x, y);
         personaje.dibujarEnem1();
         vidas.dibujar(g);
-        //g.drawString("Coordenada X:" + x, 100, 10);
-        //g.drawString("Coordenada Y:" + y, 500, 10);
         col.dibujar(g);
+        obj.dibuja1();
+        g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
     }
 
     @Override
@@ -91,6 +94,18 @@ public class Mapa1 extends BasicGameState {
             game.enterState(1);
         }
         dentro = true;
+        if (obj.botCol() && vidas.getVidas() < 6) {
+            vidas.setVidas(vidas.getVidas() + 1);
+            obj.setA(false);
+        }
+        if (obj.tar1Col()) {
+            col.setTarjeta1(col.getTarjeta1() + 1);
+            obj.setB(false);
+        }
+        if (obj.tar2Col()) {
+            col.setTarjeta1(col.getTarjeta1() + 1);
+            obj.setC(false);
+        }
     }
 
     @Override
