@@ -7,7 +7,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import org.newdawn.slick.state.transition.RotateTransition;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
@@ -22,11 +21,10 @@ public class Mapa1 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes(col);
+    private Personajes personaje = new Personajes(col, 304, 416, 368, 544, 400, 96);
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col);
-    private RotateTransition rota = new RotateTransition();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
 
@@ -38,11 +36,11 @@ public class Mapa1 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
         personaje.iniciarPers();
-        personaje.iniciarEnem1();
+        personaje.iniciarEnem();
         obstaculo = limiteMapa.crearLimite1(mapa);
-        col.colisiones1();
+        personaje.colisiones(576, 224, 496, 656, 816, 816);
         obj.creaObjetos();
-        obj.colObj1();
+        obj.colObj(992, 96, 48, 128, 1072, 176);
     }
 
     @Override
@@ -81,10 +79,14 @@ public class Mapa1 extends BasicGameState {
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
-        col.actualizarBab();
-        if (col.muere()) {
+        personaje.actualizarBab1();
+
+        if (personaje.muere1()) {
             x = 49;
             y = 288;
+            obj.setB(true);
+            obj.setC(true);
+            col.setTarjeta1(0);
             vidas.setVidas(vidas.getVidas() - 1);
             if (vidas.getVidas() == 0) {
                 game.enterState(4, entra, sale);

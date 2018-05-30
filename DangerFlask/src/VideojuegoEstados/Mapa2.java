@@ -19,9 +19,10 @@ public class Mapa2 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes(col);
+    private Personajes personaje = new Personajes(col, 0, 0, 0, 0, 0, 0);
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
+    private Objetos obj = new Objetos(col);
 
     public Mapa2(Vidas vidas) {
         this.vidas = vidas;
@@ -31,7 +32,11 @@ public class Mapa2 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.1.tmx", "juego");
         personaje.iniciarPers();
+        personaje.iniciarEnem();
         obstaculo = limiteMapa.crearLimite2(mapa);
+        personaje.colisiones(0, 0, 0, 0, 0, 0);
+        obj.creaObjetos();
+        obj.colObj(0, 0, 0, 0, 0, 0);
     }
 
     @Override

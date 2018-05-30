@@ -19,7 +19,7 @@ public class Mapa3 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes(col);
+    private Personajes personaje = new Personajes(col, 0, 0, 0, 0, 0, 0);
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
 

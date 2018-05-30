@@ -9,36 +9,12 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Colisiones {
 
-    private float x_, y_, j, a, b, c, d, e;
+    private float x_, y_;
     private int tarjeta1 = 0, tarjeta2 = 0, tarjeta3 = 0, tarjeta4 = 0;
 
     public Colisiones(float x, float y) {
         this.x_ = x;
         this.y_ = y;
-    }
-
-    public void setJ(float j) {
-        this.j = j;
-    }
-
-    public void setA(float a) {
-        this.a = a;
-    }
-
-    public void setB(float b) {
-        this.b = b;
-    }
-
-    public void setC(float c) {
-        this.c = c;
-    }
-
-    public void setD(float d) {
-        this.d = d;
-    }
-
-    public void setE(float e) {
-        this.e = e;
     }
 
     public int getTarjeta1() {
@@ -82,19 +58,9 @@ public class Colisiones {
     private Rectangle cambiarMapa3 = new Rectangle(336, 638, 45, 1);
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
     private Rectangle rectAnim = new Rectangle(x_, y_, 16, 27);
-    private Rectangle rectBab1, rectBab2, rectBab3, rectBab4, rectBab5, rectBab6;
 
     public Rectangle getRectAnim() {
         return rectAnim;
-    }
-
-    public void colisiones1() {
-        rectBab1 = new Rectangle(j, 576, 25, 15);
-        rectBab2 = new Rectangle(a, 224, 25, 15);
-        rectBab3 = new Rectangle(b, 496, 25, 15);
-        rectBab4 = new Rectangle(656, c, 14, 23);
-        rectBab5 = new Rectangle(816, d, 14, 23);
-        rectBab6 = new Rectangle(816, e, 14, 23);
     }
 
     public boolean animDentro1(boolean[][] paredes, float x, float y) {
@@ -151,15 +117,6 @@ public class Colisiones {
         rectAnim.setY(y);
     }
 
-    public void actualizarBab() {
-        rectBab1.setX(j);
-        rectBab2.setX(a);
-        rectBab3.setX(b);
-        rectBab4.setY(c);
-        rectBab5.setY(d);
-        rectBab6.setY(e);
-    }
-
     public void dibujar(Graphics g) {
         //g.drawRect(rectAnim.getX(), rectAnim.getY(), rectAnim.getWidth(), rectAnim.getHeight());
         //g.drawRect(cambiarMapa2.getX(), cambiarMapa2.getY(), cambiarMapa2.getWidth(), cambiarMapa2.getHeight());
@@ -193,15 +150,6 @@ public class Colisiones {
 
     public boolean cambiarMapa4() {
         if (rectAnim.intersects(cambiarMapa4)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean muere() {
-        if (rectAnim.intersects(rectBab1) || rectAnim.intersects(rectBab2) || rectAnim.intersects(rectBab3)
-                || rectAnim.intersects(rectBab4) || rectAnim.intersects(rectBab5) || rectAnim.intersects(rectBab6)) {
             return true;
         } else {
             return false;
