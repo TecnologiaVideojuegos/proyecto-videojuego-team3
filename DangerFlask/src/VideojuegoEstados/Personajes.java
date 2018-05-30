@@ -292,7 +292,7 @@ public class Personajes {
                 bab6 = true;
             }
         }
-    }
+    }        
 
     public void movimientoEnem2(int delta) {
         if (bab1) {
@@ -362,6 +362,87 @@ public class Personajes {
         }
     }
 
+    public void movimientoEnem3(int delta){
+        if (bab1) {
+            animBabD.start();
+            a += 10 * (float) delta / 1000;
+            if (a > 368) {
+                bab1 = false;
+            }
+        } else {
+            animBabI.start();
+            a -= 10 * (float) delta / 1000;
+            if (a < 272) {
+                bab1 = true;
+            }
+        }
+        if (bab2) {
+            animBabI.start();
+            b -= 10 * (float) delta / 1000;
+            if (b < 736) {
+                bab2 = false;
+            }
+        } else {
+            animBabD.start();
+            b += 10 * (float) delta / 1000;
+            if (b > 848) {
+                bab2 = true;
+            }
+        }
+        if (bab3) {
+            animBabD.start();
+            c += 10 * (float) delta / 1000;
+            if (c > 1104) {
+                bab3 = false;
+            }
+        } else {
+            animBabI.start();
+            c -= 10 * (float) delta / 1000;
+            if (c < 1040) {
+                bab3 = true;
+            }
+        }
+        if (bab4) {
+            animBabAb.start();
+            d += 10 * (float) delta / 1000;
+            if (d > 272) {
+                bab4 = false;
+            }
+        } else {
+            animBabAr.start();
+            d -= 10 * (float) delta / 1000;
+            if (d < 112) {
+                bab4 = true;
+            }
+        }
+        if (bab5) {
+            animBabAb.start();
+            e += 10 * (float) delta / 1000;
+            if (e > 208) {
+                bab5 = false;
+            }
+        } else {
+            animBabAr.start();
+            e -= 10 * (float) delta / 1000;
+            if (e < 112) {
+                bab5 = true;
+            }
+        }
+        if (bab6) {
+            animBabAr.start();
+            f -= 10 * (float) delta / 1000;
+            if (f < 288) {
+                bab6 = false;
+            }
+        } else {
+            animBabAb.start();
+            f += 10 * (float) delta / 1000;
+            if (f > 368) {
+                bab6 = true;
+            }
+        }
+    }
+    
     public void colisiones(int y1, int y2, int y3, int x4, int x5, int x6) {
         rectBab1 = new Rectangle(a, y1, 25, 15);
         rectBab2 = new Rectangle(b, y2, 25, 15);
@@ -392,7 +473,7 @@ public class Personajes {
         rectBab6.setY(0);
     }
 
-    public void actualizarBab1() {
+    public void actualizarBab() {
         rectBab1.setX(a);
         rectBab2.setX(b);
         rectBab3.setX(c);

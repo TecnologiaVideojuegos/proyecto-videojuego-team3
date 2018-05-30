@@ -78,7 +78,7 @@ public class Mapa1 extends BasicGameState {
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
-        personaje.actualizarBab1();
+        personaje.actualizarBab();
 
         if (personaje.muere()) {
             x = 49;

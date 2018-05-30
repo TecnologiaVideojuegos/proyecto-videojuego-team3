@@ -78,7 +78,8 @@ public class Colisiones {
 
     public boolean animDentro2(boolean[][] paredes, float x, float y) {
         if (((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
-                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida2)) {
+                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida2)
+                && tarjeta2 == 2) {
             return false;
         } else if ((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
                 || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) {
@@ -90,7 +91,8 @@ public class Colisiones {
 
     public boolean animDentro3(boolean[][] paredes, float x, float y) {
         if (((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
-                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida3)) {
+                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida3)
+                && tarjeta3 == 2) {
             return false;
         } else if ((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
                 || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) {
@@ -102,7 +104,8 @@ public class Colisiones {
 
     public boolean animDentro4(boolean[][] paredes, float x, float y) {
         if (((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
-                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida4)) {
+                || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) && rectAnim.intersects(rectSalida4)
+                && tarjeta4 == 2) {
             return false;
         } else if ((paredes[(int) ((x * 2) / 16)][(int) ((y * 2) / 16) + 3] == true)
                 || (paredes[(int) ((x * 2) / 16) + 2][(int) ((y * 2) / 16) + 3] == true)) {

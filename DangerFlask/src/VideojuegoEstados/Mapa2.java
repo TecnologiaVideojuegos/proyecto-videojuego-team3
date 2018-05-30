@@ -78,14 +78,14 @@ public class Mapa2 extends BasicGameState {
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
-        personaje.actualizarBab1();
+        personaje.actualizarBab();
 
         if (personaje.muere()) {
-            game.enterState(0);
             obj.setB(true);
             obj.setC(true);
             col.setTarjeta2(0);
             vidas.setVidas(vidas.getVidas() - 1);
+            game.enterState(0);
             if (vidas.getVidas() == 0) {
                 game.enterState(4, entra, sale);
             }
@@ -99,7 +99,7 @@ public class Mapa2 extends BasicGameState {
             obj.setA(false);
         }
         if (obj.tar1Col()) {
-            col.setTarjeta2(col.getTarjeta2()+ 1);
+            col.setTarjeta2(col.getTarjeta2() + 1);
             obj.setB(false);
         }
         if (obj.tar2Col()) {
