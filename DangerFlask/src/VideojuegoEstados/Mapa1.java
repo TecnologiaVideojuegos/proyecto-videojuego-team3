@@ -21,10 +21,10 @@ public class Mapa1 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes(col, 304, 416, 368, 544, 400, 96);
+    private Personajes personaje = new Personajes(col, 96, 304, 416, 368, 544, 400);//variable en movimiento de los enemigos
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
-    private Objetos obj = new Objetos(col);
+    private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
 
@@ -38,22 +38,21 @@ public class Mapa1 extends BasicGameState {
         personaje.iniciarPers();
         personaje.iniciarEnem();
         obstaculo = limiteMapa.crearLimite1(mapa);
-        personaje.colisiones(576, 224, 496, 656, 816, 816);
+        personaje.colisiones(576, 224, 496, 656, 816, 816);//variables estaticas de los enemigos
         obj.creaObjetos();
-        obj.colObj(992, 96, 48, 128, 1072, 176);
+        obj.colObj();//posicion de los objetos
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-
         g.scale(0.5f, 0.5f);
         mapa.render(0, 0);
         g.resetTransform();
         personaje.dibujarPers(x, y);
-        personaje.dibujarEnem1();
+        personaje.dibujarEnem(576, 224, 496, 656, 816, 816);
         vidas.dibujar(g);
         col.dibujar(g);
-        obj.dibuja1();
+        obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
     }
 
@@ -81,7 +80,7 @@ public class Mapa1 extends BasicGameState {
         col.actualizar(x, y);
         personaje.actualizarBab1();
 
-        if (personaje.muere1()) {
+        if (personaje.muere()) {
             x = 49;
             y = 288;
             obj.setB(true);

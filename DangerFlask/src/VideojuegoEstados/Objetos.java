@@ -7,9 +7,16 @@ import org.newdawn.slick.geom.Rectangle;
 public class Objetos {
 
     private Colisiones col;
+    private int xb, yb, x1, y1, x2, y2;
 
-    public Objetos(Colisiones col) {
+    public Objetos(Colisiones col, int xb, int yb, int x1, int y1, int x2, int y2) {
         this.col = col;
+        this.xb = xb;
+        this.yb = yb;
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
     }
     private Image botiquin, tarjeta1, tarjeta2;
     private Rectangle bot, tarj1, tarj2;
@@ -33,19 +40,19 @@ public class Objetos {
         tarjeta2 = new Image("./Objetos/spr_tarjeta2.png");
     }
 
-    public void dibuja1() throws SlickException {
+    public void dibuja() throws SlickException {
         if (a) {
-            botiquin.draw(992, 96);
+            botiquin.draw(xb,yb);
         }
         if (b) {
-            tarjeta1.draw(48, 128);
-            tarj1.setX(48);
-            tarj1.setY(128);
+            tarjeta1.draw(x1,y1);
+            tarj1.setX(x1);
+            tarj1.setY(y1);
         }
         if (c) {
-            tarjeta2.draw(1072, 176);
-            tarj2.setX(1072);
-            tarj2.setY(176);
+            tarjeta2.draw(x2,y2);
+            tarj2.setX(x2);
+            tarj2.setY(y2);
         }
         if (!a) {
             bot.setX(0);
@@ -61,10 +68,14 @@ public class Objetos {
         }
     }
 
-    public void colObj(int xb, int yb, int xt, int yt, int xt_, int yt_) {
+    public void dibuja2() throws SlickException {
+
+    }
+
+    public void colObj() {
         bot = new Rectangle(xb, yb, 10, 23);
-        tarj1 = new Rectangle(xt, yt, 20, 20);
-        tarj2 = new Rectangle(xt_, yt_, 20, 20);
+        tarj1 = new Rectangle(x1, y1, 20, 20);
+        tarj2 = new Rectangle(x2, y2, 20, 20);
 //        bot = new Rectangle(992, 96, 10, 23);
 //        tarj1 = new Rectangle(48, 128, 20, 20);
 //        tarj2 = new Rectangle(1072, 176, 20, 20);

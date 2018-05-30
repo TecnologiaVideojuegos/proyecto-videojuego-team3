@@ -5,6 +5,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import org.newdawn.slick.tiled.TiledMap;
 
 /**
@@ -19,10 +21,12 @@ public class Mapa2 extends BasicGameState {
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
-    private Personajes personaje = new Personajes(col, 0, 0, 0, 0, 0, 0);
+    private Personajes personaje = new Personajes(col, 32, 352, 640, 288, -100, 512);
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
-    private Objetos obj = new Objetos(col);
+    private Objetos obj = new Objetos(col, 640, 112, 432, 416, 640, 416);
+    private FadeInTransition entra = new FadeInTransition();
+    private FadeOutTransition sale = new FadeOutTransition();
 
     public Mapa2(Vidas vidas) {
         this.vidas = vidas;
@@ -34,21 +38,22 @@ public class Mapa2 extends BasicGameState {
         personaje.iniciarPers();
         personaje.iniciarEnem();
         obstaculo = limiteMapa.crearLimite2(mapa);
-        personaje.colisiones(0, 0, 0, 0, 0, 0);
+        personaje.colisiones(256, 496, 256, 560, -100, 992);
         obj.creaObjetos();
-        obj.colObj(0, 0, 0, 0, 0, 0);
+        obj.colObj();
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-
         g.scale(0.5f, 0.5f);
         mapa.render(0, 0);
         g.resetTransform();
         personaje.dibujarPers(x, y);
-        g.drawString("Coordenada X:" + x, 100, 10);
-        g.drawString("Coordenada Y:" + y, 500, 10);
+        personaje.dibujarEnem(256, 496, 256, 560, -100, 992);
+        vidas.dibujar(g);
         col.dibujar(g);
+        obj.dibuja();
+        g.drawString("Tarjetas recogidas: " + col.getTarjeta2() + "/2", 400, 10);
     }
 
     @Override
@@ -69,14 +74,38 @@ public class Mapa2 extends BasicGameState {
             }
         }
         i = personaje.movimiento(dentro, x, y, container, delta);
+        personaje.movimientoEnem2(delta);
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
-        col.actualizar(x, y);
+        personaje.actualizarBab1();
+
+        if (personaje.muere()) {
+            game.enterState(0);
+            obj.setB(true);
+            obj.setC(true);
+            col.setTarjeta2(0);
+            vidas.setVidas(vidas.getVidas() - 1);
+            if (vidas.getVidas() == 0) {
+                game.enterState(4, entra, sale);
+            }
+        }
         if (col.cambiarMapa2()) {
             game.enterState(2);
         }
         dentro = true;
+        if (obj.botCol() && vidas.getVidas() < 6) {
+            vidas.setVidas(vidas.getVidas() + 1);
+            obj.setA(false);
+        }
+        if (obj.tar1Col()) {
+            col.setTarjeta2(col.getTarjeta2()+ 1);
+            obj.setB(false);
+        }
+        if (obj.tar2Col()) {
+            col.setTarjeta2(col.getTarjeta2() + 1);
+            obj.setC(false);
+        }
     }
 
     @Override
