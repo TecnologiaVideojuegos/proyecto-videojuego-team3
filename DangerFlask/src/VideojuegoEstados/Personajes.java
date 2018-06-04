@@ -54,7 +54,7 @@ public class Personajes {
         spriteAb = new SpriteSheet("./juego/spr_julian_abajo.png", 17, 26);
         animAb = new Animation(spriteAb, 100);
     }
-    
+
     public void iniciarPersZacarias() throws SlickException {
         spriteD = new SpriteSheet("./juego/spr_zacarias_derecha.png", 14, 26);
         animD = new Animation(spriteD, 100);
@@ -303,7 +303,7 @@ public class Personajes {
                 bab6 = true;
             }
         }
-    }        
+    }
 
     public void movimientoEnem2(int delta) {
         if (bab1) {
@@ -373,7 +373,7 @@ public class Personajes {
         }
     }
 
-    public void movimientoEnem3(int delta){
+    public void movimientoEnem3(int delta) {
         if (bab1) {
             animBabD.start();
             a += 10 * (float) delta / 1000;
@@ -453,8 +453,8 @@ public class Personajes {
             }
         }
     }
-    
-    public void movimientoEnem4(int delta){
+
+    public void movimientoEnem4(int delta) {
         if (bab1) {
             animBabD.start();
             a += 10 * (float) delta / 1000;
@@ -534,8 +534,8 @@ public class Personajes {
             }
         }
     }
-    
-    public void colisiones(int y1, int y2, int y3, int x4, int x5, int x6) {
+
+    public void colisionesBab(int y1, int y2, int y3, int x4, int x5, int x6) {
         rectBab1 = new Rectangle(a, y1, 25, 15);
         rectBab2 = new Rectangle(b, y2, 25, 15);
         rectBab3 = new Rectangle(c, y3, 25, 15);
@@ -544,6 +544,14 @@ public class Personajes {
         rectBab6 = new Rectangle(x6, f, 14, 23);
     }
 
+    public void colisionesMono(int y1, int y2, int y3, int x4, int x5, int x6) {
+        rectBab1 = new Rectangle(a, y1, 15, 22);
+        rectBab2 = new Rectangle(b, y2, 15, 22);
+        rectBab3 = new Rectangle(c, y3, 15, 22);
+        rectBab4 = new Rectangle(x4, d, 18, 22);
+        rectBab5 = new Rectangle(x5, e, 18, 22);
+        rectBab6 = new Rectangle(x6, f, 18, 22);
+    }
 
     public void actualizarBab() {
         rectBab1.setX(a);
