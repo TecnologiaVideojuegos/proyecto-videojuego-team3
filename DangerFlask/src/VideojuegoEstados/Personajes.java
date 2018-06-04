@@ -347,78 +347,78 @@ public class Personajes {
     public void movimientoEnem3(int delta) {
         if (enem1) {
             animEnemD.start();
-            a += 10 * (float) delta / 1000;
+            a += 50 * (float) delta / 1000;
             if (a > 368) {
                 enem1 = false;
             }
         } else {
             animEnemI.start();
-            a -= 10 * (float) delta / 1000;
+            a -= 50 * (float) delta / 1000;
             if (a < 272) {
                 enem1 = true;
             }
         }
         if (enem2) {
             animEnemI.start();
-            b -= 10 * (float) delta / 1000;
+            b -= 50 * (float) delta / 1000;
             if (b < 736) {
                 enem2 = false;
             }
         } else {
             animEnemD.start();
-            b += 10 * (float) delta / 1000;
+            b += 50 * (float) delta / 1000;
             if (b > 848) {
                 enem2 = true;
             }
         }
         if (enem3) {
             animEnemD.start();
-            c += 10 * (float) delta / 1000;
+            c += 50 * (float) delta / 1000;
             if (c > 1104) {
                 enem3 = false;
             }
         } else {
             animEnemI.start();
-            c -= 10 * (float) delta / 1000;
+            c -= 50 * (float) delta / 1000;
             if (c < 1040) {
                 enem3 = true;
             }
         }
         if (enem4) {
             animEnemAb.start();
-            d += 10 * (float) delta / 1000;
+            d += 50 * (float) delta / 1000;
             if (d > 272) {
                 enem4 = false;
             }
         } else {
             animEnemAr.start();
-            d -= 10 * (float) delta / 1000;
+            d -= 50 * (float) delta / 1000;
             if (d < 112) {
                 enem4 = true;
             }
         }
         if (enem5) {
             animEnemAb.start();
-            e += 10 * (float) delta / 1000;
+            e += 50 * (float) delta / 1000;
             if (e > 208) {
                 enem5 = false;
             }
         } else {
             animEnemAr.start();
-            e -= 10 * (float) delta / 1000;
+            e -= 50 * (float) delta / 1000;
             if (e < 112) {
                 enem5 = true;
             }
         }
         if (enem6) {
             animEnemAr.start();
-            f -= 10 * (float) delta / 1000;
+            f -= 50 * (float) delta / 1000;
             if (f < 288) {
                 enem6 = false;
             }
         } else {
             animEnemAb.start();
-            f += 10 * (float) delta / 1000;
+            f += 50 * (float) delta / 1000;
             if (f > 368) {
                 enem6 = true;
             }
