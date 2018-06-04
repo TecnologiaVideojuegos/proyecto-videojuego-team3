@@ -461,12 +461,6 @@ public class Personajes {
         rectBab4 = new Rectangle(x4, d, 14, 23);
         rectBab5 = new Rectangle(x5, e, 14, 23);
         rectBab6 = new Rectangle(x6, f, 14, 23);
-//        rectBab1 = new Rectangle(f, 576, 25, 15);
-//        rectBab2 = new Rectangle(a, 224, 25, 15);
-//        rectBab3 = new Rectangle(b, 496, 25, 15);
-//        rectBab4 = new Rectangle(656, c, 14, 23);
-//        rectBab5 = new Rectangle(816, d, 14, 23);
-//        rectBab6 = new Rectangle(816, e, 14, 23);
     }
 
 
