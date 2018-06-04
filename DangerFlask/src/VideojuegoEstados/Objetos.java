@@ -42,15 +42,15 @@ public class Objetos {
 
     public void dibuja() throws SlickException {
         if (a) {
-            botiquin.draw(xb,yb);
+            botiquin.draw(xb, yb);
         }
         if (b) {
-            tarjeta1.draw(x1,y1);
+            tarjeta1.draw(x1, y1);
             tarj1.setX(x1);
             tarj1.setY(y1);
         }
         if (c) {
-            tarjeta2.draw(x2,y2);
+            tarjeta2.draw(x2, y2);
             tarj2.setX(x2);
             tarj2.setY(y2);
         }
@@ -68,10 +68,6 @@ public class Objetos {
         }
     }
 
-    public void dibuja2() throws SlickException {
-
-    }
-
     public void colObj() {
         bot = new Rectangle(xb, yb, 10, 23);
         tarj1 = new Rectangle(x1, y1, 20, 20);
@@ -79,15 +75,6 @@ public class Objetos {
 //        bot = new Rectangle(992, 96, 10, 23);
 //        tarj1 = new Rectangle(48, 128, 20, 20);
 //        tarj2 = new Rectangle(1072, 176, 20, 20);
-    }
-
-    public void colObj2() {
-        bot.setX(0);
-        bot.setY(0);
-        tarj1.setX(0);
-        tarj1.setY(0);
-        tarj2.setX(0);
-        tarj2.setY(0);
     }
 
     public boolean botCol() {

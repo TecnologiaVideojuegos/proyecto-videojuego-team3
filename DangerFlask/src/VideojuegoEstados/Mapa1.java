@@ -24,7 +24,7 @@ public class Mapa1 extends BasicGameState {
     private Personajes personaje = new Personajes(col, 96, 304, 416, 368, 544, 400);//variable en movimiento de los enemigos
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
-    private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);
+    private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);//Coordenadas de objetos
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
 
