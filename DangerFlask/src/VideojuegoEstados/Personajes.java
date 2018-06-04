@@ -454,6 +454,87 @@ public class Personajes {
         }
     }
     
+    public void movimientoEnem4(int delta){
+        if (bab1) {
+            animBabD.start();
+            a += 10 * (float) delta / 1000;
+            if (a > 448) {
+                bab1 = false;
+            }
+        } else {
+            animBabI.start();
+            a -= 10 * (float) delta / 1000;
+            if (a < 368) {
+                bab1 = true;
+            }
+        }
+        if (bab2) {
+            animBabI.start();
+            b -= 10 * (float) delta / 1000;
+            if (b < 816) {
+                bab2 = false;
+            }
+        } else {
+            animBabD.start();
+            b += 10 * (float) delta / 1000;
+            if (b > 912) {
+                bab2 = true;
+            }
+        }
+        if (bab3) {
+            animBabD.start();
+            c += 10 * (float) delta / 1000;
+            if (c > 528) {
+                bab3 = false;
+            }
+        } else {
+            animBabI.start();
+            c -= 10 * (float) delta / 1000;
+            if (c < 480) {
+                bab3 = true;
+            }
+        }
+        if (bab4) {
+            animBabAb.start();
+            d += 10 * (float) delta / 1000;
+            if (d > 544) {
+                bab4 = false;
+            }
+        } else {
+            animBabAr.start();
+            d -= 10 * (float) delta / 1000;
+            if (d < 368) {
+                bab4 = true;
+            }
+        }
+        if (bab5) {
+            animBabAb.start();
+            e += 10 * (float) delta / 1000;
+            if (e > 512) {
+                bab5 = false;
+            }
+        } else {
+            animBabAr.start();
+            e -= 10 * (float) delta / 1000;
+            if (e < 432) {
+                bab5 = true;
+            }
+        }
+        if (bab6) {
+            animBabAr.start();
+            f -= 10 * (float) delta / 1000;
+            if (f < 528) {
+                bab6 = false;
+            }
+        } else {
+            animBabAb.start();
+            f += 10 * (float) delta / 1000;
+            if (f > 592) {
+                bab6 = true;
+            }
+        }
+    }
+    
     public void colisiones(int y1, int y2, int y3, int x4, int x5, int x6) {
         rectBab1 = new Rectangle(a, y1, 25, 15);
         rectBab2 = new Rectangle(b, y2, 25, 15);
