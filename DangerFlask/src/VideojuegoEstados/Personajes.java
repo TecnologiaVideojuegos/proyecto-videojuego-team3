@@ -469,20 +469,6 @@ public class Personajes {
 //        rectBab6 = new Rectangle(816, e, 14, 23);
     }
 
-    public void colisiones2() {
-        rectBab1.setX(a);
-        rectBab1.setY(0);
-        rectBab2.setX(b);
-        rectBab2.setY(0);
-        rectBab3.setX(c);
-        rectBab3.setY(0);
-        rectBab4.setX(0);
-        rectBab4.setY(d);
-        rectBab5.setX(0);
-        rectBab5.setY(e);
-        rectBab6.setX(0);
-        rectBab6.setY(0);
-    }
 
     public void actualizarBab() {
         rectBab1.setX(a);
