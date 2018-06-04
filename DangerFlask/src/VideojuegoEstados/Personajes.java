@@ -9,14 +9,14 @@ import org.newdawn.slick.geom.Rectangle;
 
 public class Personajes {
 
-    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteBabD, spriteBabI, spriteBabAr, spriteBabAb;
-    private Animation animD, animI, animAr, animAb, animBabD, animBabI, animBabAr, animBabAb;
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, bab1 = true, bab2 = true, bab3 = true,
-            bab4 = true, bab5 = true, bab6 = true;
+    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteEnemD, spriteEnemI, spriteEnemAr, spriteEnemAb;
+    private Animation animD, animI, animAr, animAb, animEnemD, animEnemI, animEnemAr, animEnemAb;
+    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, enem1 = true, enem2 = true, enem3 = true,
+            enem4 = true, enem5 = true, enem6 = true;
     private int i = 6;
     private float x_, y_, a, b, c, d, e, f;
     private Colisiones col;
-    private Rectangle rectBab1, rectBab2, rectBab3, rectBab4, rectBab5, rectBab6;
+    private Rectangle rectEnem1, rectEnem2, rectEnem3, rectEnem4, rectEnem5, rectEnem6;
 
     public Personajes(Colisiones col, int a, int b, int c, int d, int e, int f) {
         this.col = col;
@@ -67,14 +67,14 @@ public class Personajes {
     }
 
     public void iniciarEnem() throws SlickException {
-        spriteBabD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
-        animBabD = new Animation(spriteBabD, 250);
-        spriteBabI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
-        animBabI = new Animation(spriteBabI, 250);
-        spriteBabAr = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 14, 23);
-        animBabAr = new Animation(spriteBabAr, 250);
-        spriteBabAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_abajo.png", 15, 22);
-        animBabAb = new Animation(spriteBabAb, 250);
+        spriteEnemD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
+        animEnemD = new Animation(spriteEnemD, 250);
+        spriteEnemI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
+        animEnemI = new Animation(spriteEnemI, 250);
+        spriteEnemAr = new SpriteSheet("./Enemigos/Babosa/spr_babosa_arriba.png", 14, 23);
+        animEnemAr = new Animation(spriteEnemAr, 250);
+        spriteEnemAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_abajo.png", 15, 22);
+        animEnemAb = new Animation(spriteEnemAb, 250);
     }
 
     public void dibujarPers(float x, float y) {
@@ -93,41 +93,41 @@ public class Personajes {
     }
 
     public void dibujarEnem(int y1, int y2, int y3, int x4, int x5, int x6) {
-        if (bab1) {
-            animBabD.draw(a, y1);
+        if (enem1) {
+            animEnemD.draw(a, y1);
         }
-        if (!bab1) {
-            animBabI.draw(a, y1);
+        if (!enem1) {
+            animEnemI.draw(a, y1);
         }
-        if (bab2) {
-            animBabI.draw(b, y2);
+        if (enem2) {
+            animEnemI.draw(b, y2);
         }
-        if (!bab2) {
-            animBabD.draw(b, y2);
+        if (!enem2) {
+            animEnemD.draw(b, y2);
         }
-        if (bab3) {
-            animBabD.draw(c, y3);
+        if (enem3) {
+            animEnemD.draw(c, y3);
         }
-        if (!bab3) {
-            animBabI.draw(c, y3);
+        if (!enem3) {
+            animEnemI.draw(c, y3);
         }
-        if (bab4) {
-            animBabAb.draw(x4, d);
+        if (enem4) {
+            animEnemAb.draw(x4, d);
         }
-        if (!bab4) {
-            animBabAr.draw(x4, d);
+        if (!enem4) {
+            animEnemAr.draw(x4, d);
         }
-        if (bab5) {
-            animBabAb.draw(x5, e);
+        if (enem5) {
+            animEnemAb.draw(x5, e);
         }
-        if (!bab5) {
-            animBabAr.draw(x5, e);
+        if (!enem5) {
+            animEnemAr.draw(x5, e);
         }
-        if (bab6) {
-            animBabAr.draw(x6, f);
+        if (enem6) {
+            animEnemAr.draw(x6, f);
         }
-        if (!bab6) {
-            animBabAb.draw(x6, f);
+        if (!enem6) {
+            animEnemAb.draw(x6, f);
         }
 //        if (bab1) {
 //            animBabD.draw(a, 576);
@@ -225,346 +225,346 @@ public class Personajes {
     }
 
     public void movimientoEnem1(int delta) {
-        if (bab1) {
-            animBabD.start();
+        if (enem1) {
+            animEnemD.start();
             a += 10 * (float) delta / 1000;
             if (a > 288) {
-                bab1 = false;
+                enem1 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             a -= 10 * (float) delta / 1000;
             if (a < 96) {
-                bab1 = true;
+                enem1 = true;
             }
         }
-        if (bab2) {
-            animBabI.start();
+        if (enem2) {
+            animEnemI.start();
             b -= 10 * (float) delta / 1000;
             if (b < 112) {
-                bab2 = false;
+                enem2 = false;
             }
         } else {
-            animBabD.start();
+            animEnemD.start();
             b += 10 * (float) delta / 1000;
             if (b > 304) {
-                bab2 = true;
+                enem2 = true;
             }
         }
-        if (bab3) {
-            animBabD.start();
+        if (enem3) {
+            animEnemD.start();
             c += 10 * (float) delta / 1000;
             if (c > 576) {
-                bab3 = false;
+                enem3 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             c -= 10 * (float) delta / 1000;
             if (c < 416) {
-                bab3 = true;
+                enem3 = true;
             }
         }
-        if (bab4) {
-            animBabAb.start();
+        if (enem4) {
+            animEnemAb.start();
             d += 10 * (float) delta / 1000;
             if (d > 416) {
-                bab4 = false;
+                enem4 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             d -= 10 * (float) delta / 1000;
             if (d < 368) {
-                bab4 = true;
+                enem4 = true;
             }
         }
-        if (bab5) {
-            animBabAb.start();
+        if (enem5) {
+            animEnemAb.start();
             e += 10 * (float) delta / 1000;
             if (e > 592) {
-                bab5 = false;
+                enem5 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             e -= 10 * (float) delta / 1000;
             if (e < 544) {
-                bab5 = true;
+                enem5 = true;
             }
         }
-        if (bab6) {
-            animBabAr.start();
+        if (enem6) {
+            animEnemAr.start();
             f -= 10 * (float) delta / 1000;
             if (f < 320) {
-                bab6 = false;
+                enem6 = false;
             }
         } else {
-            animBabAb.start();
+            animEnemAb.start();
             f += 10 * (float) delta / 1000;
             if (f > 400) {
-                bab6 = true;
+                enem6 = true;
             }
         }
     }
 
     public void movimientoEnem2(int delta) {
-        if (bab1) {
-            animBabD.start();
+        if (enem1) {
+            animEnemD.start();
             a += 10 * (float) delta / 1000;
             if (a > 112) {
-                bab1 = false;
+                enem1 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             a -= 10 * (float) delta / 1000;
             if (a < 32) {
-                bab1 = true;
+                enem1 = true;
             }
         }
-        if (bab2) {
-            animBabI.start();
+        if (enem2) {
+            animEnemI.start();
             b -= 10 * (float) delta / 1000;
             if (b < 272) {
-                bab2 = false;
+                enem2 = false;
             }
         } else {
-            animBabD.start();
+            animEnemD.start();
             b += 10 * (float) delta / 1000;
             if (b > 352) {
-                bab2 = true;
+                enem2 = true;
             }
         }
-        if (bab3) {
-            animBabD.start();
+        if (enem3) {
+            animEnemD.start();
             c += 10 * (float) delta / 1000;
             if (c > 752) {
-                bab3 = false;
+                enem3 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             c -= 10 * (float) delta / 1000;
             if (c < 640) {
-                bab3 = true;
+                enem3 = true;
             }
         }
-        if (bab4) {
-            animBabAb.start();
+        if (enem4) {
+            animEnemAb.start();
             d += 10 * (float) delta / 1000;
             if (d > 384) {
-                bab4 = false;
+                enem4 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             d -= 10 * (float) delta / 1000;
             if (d < 288) {
-                bab4 = true;
+                enem4 = true;
             }
         }
-        if (bab6) {
-            animBabAr.start();
+        if (enem6) {
+            animEnemAr.start();
             f -= 10 * (float) delta / 1000;
             if (f < 448) {
-                bab6 = false;
+                enem6 = false;
             }
         } else {
-            animBabAb.start();
+            animEnemAb.start();
             f += 10 * (float) delta / 1000;
             if (f > 512) {
-                bab6 = true;
+                enem6 = true;
             }
         }
     }
 
     public void movimientoEnem3(int delta) {
-        if (bab1) {
-            animBabD.start();
+        if (enem1) {
+            animEnemD.start();
             a += 10 * (float) delta / 1000;
             if (a > 368) {
-                bab1 = false;
+                enem1 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             a -= 10 * (float) delta / 1000;
             if (a < 272) {
-                bab1 = true;
+                enem1 = true;
             }
         }
-        if (bab2) {
-            animBabI.start();
+        if (enem2) {
+            animEnemI.start();
             b -= 10 * (float) delta / 1000;
             if (b < 736) {
-                bab2 = false;
+                enem2 = false;
             }
         } else {
-            animBabD.start();
+            animEnemD.start();
             b += 10 * (float) delta / 1000;
             if (b > 848) {
-                bab2 = true;
+                enem2 = true;
             }
         }
-        if (bab3) {
-            animBabD.start();
+        if (enem3) {
+            animEnemD.start();
             c += 10 * (float) delta / 1000;
             if (c > 1104) {
-                bab3 = false;
+                enem3 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             c -= 10 * (float) delta / 1000;
             if (c < 1040) {
-                bab3 = true;
+                enem3 = true;
             }
         }
-        if (bab4) {
-            animBabAb.start();
+        if (enem4) {
+            animEnemAb.start();
             d += 10 * (float) delta / 1000;
             if (d > 272) {
-                bab4 = false;
+                enem4 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             d -= 10 * (float) delta / 1000;
             if (d < 112) {
-                bab4 = true;
+                enem4 = true;
             }
         }
-        if (bab5) {
-            animBabAb.start();
+        if (enem5) {
+            animEnemAb.start();
             e += 10 * (float) delta / 1000;
             if (e > 208) {
-                bab5 = false;
+                enem5 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             e -= 10 * (float) delta / 1000;
             if (e < 112) {
-                bab5 = true;
+                enem5 = true;
             }
         }
-        if (bab6) {
-            animBabAr.start();
+        if (enem6) {
+            animEnemAr.start();
             f -= 10 * (float) delta / 1000;
             if (f < 288) {
-                bab6 = false;
+                enem6 = false;
             }
         } else {
-            animBabAb.start();
+            animEnemAb.start();
             f += 10 * (float) delta / 1000;
             if (f > 368) {
-                bab6 = true;
+                enem6 = true;
             }
         }
     }
 
     public void movimientoEnem4(int delta) {
-        if (bab1) {
-            animBabD.start();
+        if (enem1) {
+            animEnemD.start();
             a += 10 * (float) delta / 1000;
             if (a > 448) {
-                bab1 = false;
+                enem1 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             a -= 10 * (float) delta / 1000;
             if (a < 368) {
-                bab1 = true;
+                enem1 = true;
             }
         }
-        if (bab2) {
-            animBabI.start();
+        if (enem2) {
+            animEnemI.start();
             b -= 10 * (float) delta / 1000;
             if (b < 816) {
-                bab2 = false;
+               enem2 = false;
             }
         } else {
-            animBabD.start();
+            animEnemD.start();
             b += 10 * (float) delta / 1000;
             if (b > 912) {
-                bab2 = true;
+                enem2 = true;
             }
         }
-        if (bab3) {
-            animBabD.start();
+        if (enem3) {
+            animEnemD.start();
             c += 10 * (float) delta / 1000;
             if (c > 528) {
-                bab3 = false;
+               enem3 = false;
             }
         } else {
-            animBabI.start();
+            animEnemI.start();
             c -= 10 * (float) delta / 1000;
             if (c < 480) {
-                bab3 = true;
+                enem3 = true;
             }
         }
-        if (bab4) {
-            animBabAb.start();
+        if (enem4) {
+            animEnemAb.start();
             d += 10 * (float) delta / 1000;
             if (d > 544) {
-                bab4 = false;
+                enem4 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             d -= 10 * (float) delta / 1000;
             if (d < 368) {
-                bab4 = true;
+                enem4 = true;
             }
         }
-        if (bab5) {
-            animBabAb.start();
+        if (enem5) {
+            animEnemAb.start();
             e += 10 * (float) delta / 1000;
             if (e > 512) {
-                bab5 = false;
+                enem5 = false;
             }
         } else {
-            animBabAr.start();
+            animEnemAr.start();
             e -= 10 * (float) delta / 1000;
             if (e < 432) {
-                bab5 = true;
+                enem5 = true;
             }
         }
-        if (bab6) {
-            animBabAr.start();
+        if (enem6) {
+            animEnemAr.start();
             f -= 10 * (float) delta / 1000;
             if (f < 528) {
-                bab6 = false;
+                enem6 = false;
             }
         } else {
-            animBabAb.start();
+            animEnemAb.start();
             f += 10 * (float) delta / 1000;
             if (f > 592) {
-                bab6 = true;
+                enem6 = true;
             }
         }
     }
 
     public void colisionesBab(int y1, int y2, int y3, int x4, int x5, int x6) {
-        rectBab1 = new Rectangle(a, y1, 25, 15);
-        rectBab2 = new Rectangle(b, y2, 25, 15);
-        rectBab3 = new Rectangle(c, y3, 25, 15);
-        rectBab4 = new Rectangle(x4, d, 14, 23);
-        rectBab5 = new Rectangle(x5, e, 14, 23);
-        rectBab6 = new Rectangle(x6, f, 14, 23);
+        rectEnem1 = new Rectangle(a, y1, 25, 15);
+        rectEnem2 = new Rectangle(b, y2, 25, 15);
+        rectEnem3 = new Rectangle(c, y3, 25, 15);
+        rectEnem4 = new Rectangle(x4, d, 14, 23);
+        rectEnem5 = new Rectangle(x5, e, 14, 23);
+        rectEnem6 = new Rectangle(x6, f, 14, 23);
     }
 
     public void colisionesMono(int y1, int y2, int y3, int x4, int x5, int x6) {
-        rectBab1 = new Rectangle(a, y1, 15, 22);
-        rectBab2 = new Rectangle(b, y2, 15, 22);
-        rectBab3 = new Rectangle(c, y3, 15, 22);
-        rectBab4 = new Rectangle(x4, d, 18, 22);
-        rectBab5 = new Rectangle(x5, e, 18, 22);
-        rectBab6 = new Rectangle(x6, f, 18, 22);
+        rectEnem1 = new Rectangle(a, y1, 15, 22);
+        rectEnem2 = new Rectangle(b, y2, 15, 22);
+        rectEnem3 = new Rectangle(c, y3, 15, 22);
+        rectEnem4 = new Rectangle(x4, d, 18, 22);
+        rectEnem5 = new Rectangle(x5, e, 18, 22);
+        rectEnem6 = new Rectangle(x6, f, 18, 22);
     }
 
     public void actualizarBab() {
-        rectBab1.setX(a);
-        rectBab2.setX(b);
-        rectBab3.setX(c);
-        rectBab4.setY(d);
-        rectBab5.setY(e);
-        rectBab6.setY(f);
+        rectEnem1.setX(a);
+        rectEnem2.setX(b);
+        rectEnem3.setX(c);
+        rectEnem4.setY(d);
+        rectEnem5.setY(e);
+        rectEnem6.setY(f);
     }
 
     public boolean muere() {
-        if (col.getRectAnim().intersects(rectBab1) || col.getRectAnim().intersects(rectBab2) || col.getRectAnim().intersects(rectBab3)
-                || col.getRectAnim().intersects(rectBab4) || col.getRectAnim().intersects(rectBab5) || col.getRectAnim().intersects(rectBab6)) {
+        if (col.getRectAnim().intersects(rectEnem1) || col.getRectAnim().intersects(rectEnem2) || col.getRectAnim().intersects(rectEnem3)
+                || col.getRectAnim().intersects(rectEnem4) || col.getRectAnim().intersects(rectEnem5) || col.getRectAnim().intersects(rectEnem6)) {
             return true;
         } else {
             return false;
