@@ -30,7 +30,7 @@ public class Mapa4 extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.2.tmx", "juego");
-        personaje.iniciarPers();
+        personaje.iniciarPersZacarias();
         obstaculo = limiteMapa.crearLimite4(mapa);
     }
 

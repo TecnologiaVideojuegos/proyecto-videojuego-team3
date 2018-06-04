@@ -44,14 +44,25 @@ public class Personajes {
         this.y_ = y_;
     }
 
-    public void iniciarPers() throws SlickException {
-        spriteD = new SpriteSheet("./juego/animD.png", 16, 25);
+    public void iniciarPersJulian() throws SlickException {
+        spriteD = new SpriteSheet("./juego/spr_julian_derecha.png", 16, 26);
         animD = new Animation(spriteD, 100);
-        spriteI = new SpriteSheet("./juego/animI.png", 16, 25);
+        spriteI = new SpriteSheet("./juego/spr_julian_izquierda.png", 16, 26);
         animI = new Animation(spriteI, 100);
-        spriteAr = new SpriteSheet("./juego/animAr.png", 17, 27);
+        spriteAr = new SpriteSheet("./juego/spr_julian_arriba.png", 17, 27);
         animAr = new Animation(spriteAr, 100);
-        spriteAb = new SpriteSheet("./juego/animAb.png", 17, 27);
+        spriteAb = new SpriteSheet("./juego/spr_julian_abajo.png", 17, 26);
+        animAb = new Animation(spriteAb, 100);
+    }
+    
+    public void iniciarPersZacarias() throws SlickException {
+        spriteD = new SpriteSheet("./juego/spr_zacarias_derecha.png", 14, 26);
+        animD = new Animation(spriteD, 100);
+        spriteI = new SpriteSheet("./juego/spr_zacarias_izquierda.png", 14, 26);
+        animI = new Animation(spriteI, 100);
+        spriteAr = new SpriteSheet("./juego/spr_zacarias_arriba.png", 17, 26);
+        animAr = new Animation(spriteAr, 100);
+        spriteAb = new SpriteSheet("./juego/spr_zacarias_abajo.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
     }
 

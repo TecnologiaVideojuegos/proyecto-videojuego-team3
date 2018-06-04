@@ -35,7 +35,7 @@ public class Mapa1 extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
-        personaje.iniciarPers();
+        personaje.iniciarPersJulian();
         personaje.iniciarEnem();
         obstaculo = limiteMapa.crearLimite1(mapa);
         personaje.colisiones(576, 224, 496, 656, 816, 816);//variables estaticas de los enemigos
