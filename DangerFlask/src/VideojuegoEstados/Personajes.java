@@ -129,42 +129,6 @@ public class Personajes {
         if (!enem6) {
             animEnemAb.draw(x6, f);
         }
-//        if (bab1) {
-//            animBabD.draw(a, 576);
-//        }
-//        if (!bab1) {
-//            animBabI.draw(a, 576);
-//        }
-//        if (bab2) {
-//            animBabI.draw(b, 224);
-//        }
-//        if (!bab2) {
-//            animBabD.draw(b, 224);
-//        }
-//        if (bab3) {
-//            animBabD.draw(c, 496);
-//        }
-//        if (!bab3) {
-//            animBabI.draw(c, 496);
-//        }
-//        if (bab4) {
-//            animBabAb.draw(656, d);
-//        }
-//        if (!bab4) {
-//            animBabAr.draw(656, d);
-//        }
-//        if (bab5) {
-//            animBabAb.draw(816, e);
-//        }
-//        if (!bab5) {
-//            animBabAr.draw(816, e);
-//        }
-//        if (bab6) {
-//            animBabAr.draw(816, f);
-//        }
-//        if (!bab6) {
-//            animBabAb.draw(816, f);
-//        }
     }
 
     public void dibujarEnem2() {
