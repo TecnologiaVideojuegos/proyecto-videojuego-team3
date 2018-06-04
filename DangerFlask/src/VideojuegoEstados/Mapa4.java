@@ -36,9 +36,9 @@ public class Mapa4 extends BasicGameState {
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.2.tmx", "juego");
         personaje.iniciarPersZacarias();
-        personaje.iniciarEnem();
+        personaje.iniciarEnemMono();
         obstaculo = limiteMapa.crearLimite4(mapa);
-        personaje.colisiones(272, 288, 576, 416, 1072, 656);
+        personaje.colisionesMono(272, 288, 576, 416, 1072, 656);
         obj.creaObjetos();
         obj.colObj();
     }
@@ -79,7 +79,7 @@ public class Mapa4 extends BasicGameState {
         x = personaje.getX();
         y = personaje.getY();
         col.actualizar(x, y);
-        personaje.actualizarBab();
+        personaje.actualizarEnem();
         if (personaje.muere()) {
             x = 34;
             y = 275;

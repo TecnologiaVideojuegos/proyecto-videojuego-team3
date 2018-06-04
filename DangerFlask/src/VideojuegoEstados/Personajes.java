@@ -66,7 +66,7 @@ public class Personajes {
         animAb = new Animation(spriteAb, 100);
     }
 
-    public void iniciarEnem() throws SlickException {
+    public void iniciarEnemBab() throws SlickException {
         spriteEnemD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
         animEnemD = new Animation(spriteEnemD, 250);
         spriteEnemI = new SpriteSheet("./Enemigos/Babosa/spr_babosa_izquierda.png", 25, 15);
@@ -75,6 +75,17 @@ public class Personajes {
         animEnemAr = new Animation(spriteEnemAr, 250);
         spriteEnemAb = new SpriteSheet("./Enemigos/Babosa/spr_babosa_abajo.png", 15, 22);
         animEnemAb = new Animation(spriteEnemAb, 250);
+    }
+
+    public void iniciarEnemMono() throws SlickException {
+        spriteEnemD = new SpriteSheet("./Enemigos/Mono/spr_mono2_derecha.png", 15, 22);
+        animEnemD = new Animation(spriteEnemD, 150);
+        spriteEnemI = new SpriteSheet("./Enemigos/Mono/spr_mono2_izquierda.png", 15, 22);
+        animEnemI = new Animation(spriteEnemI, 150);
+        spriteEnemAr = new SpriteSheet("./Enemigos/Mono/spr_mono2_arriba.png", 18, 22);
+        animEnemAr = new Animation(spriteEnemAr, 150);
+        spriteEnemAb = new SpriteSheet("./Enemigos/Mono/spr_mono2_abajo.png", 18, 22);
+        animEnemAb = new Animation(spriteEnemAb, 150);
     }
 
     public void dibujarPers(float x, float y) {
@@ -129,10 +140,6 @@ public class Personajes {
         if (!enem6) {
             animEnemAb.draw(x6, f);
         }
-    }
-
-    public void dibujarEnem2() {
-
     }
 
     public int movimiento(boolean dentro, float x, float y, GameContainer container, int delta) {
@@ -421,78 +428,78 @@ public class Personajes {
     public void movimientoEnem4(int delta) {
         if (enem1) {
             animEnemD.start();
-            a += 10 * (float) delta / 1000;
+            a += 50 * (float) delta / 1000;
             if (a > 448) {
                 enem1 = false;
             }
         } else {
             animEnemI.start();
-            a -= 10 * (float) delta / 1000;
+            a -= 50 * (float) delta / 1000;
             if (a < 368) {
                 enem1 = true;
             }
         }
         if (enem2) {
             animEnemI.start();
-            b -= 10 * (float) delta / 1000;
+            b -= 50 * (float) delta / 1000;
             if (b < 816) {
-               enem2 = false;
+                enem2 = false;
             }
         } else {
             animEnemD.start();
-            b += 10 * (float) delta / 1000;
+            b += 50 * (float) delta / 1000;
             if (b > 912) {
                 enem2 = true;
             }
         }
         if (enem3) {
             animEnemD.start();
-            c += 10 * (float) delta / 1000;
+            c += 50 * (float) delta / 1000;
             if (c > 528) {
-               enem3 = false;
+                enem3 = false;
             }
         } else {
             animEnemI.start();
-            c -= 10 * (float) delta / 1000;
+            c -= 50 * (float) delta / 1000;
             if (c < 480) {
                 enem3 = true;
             }
         }
         if (enem4) {
             animEnemAb.start();
-            d += 10 * (float) delta / 1000;
+            d += 50 * (float) delta / 1000;
             if (d > 544) {
                 enem4 = false;
             }
         } else {
             animEnemAr.start();
-            d -= 10 * (float) delta / 1000;
+            d -= 50 * (float) delta / 1000;
             if (d < 368) {
                 enem4 = true;
             }
         }
         if (enem5) {
             animEnemAb.start();
-            e += 10 * (float) delta / 1000;
+            e += 50 * (float) delta / 1000;
             if (e > 512) {
                 enem5 = false;
             }
         } else {
             animEnemAr.start();
-            e -= 10 * (float) delta / 1000;
+            e -= 50 * (float) delta / 1000;
             if (e < 432) {
                 enem5 = true;
             }
         }
         if (enem6) {
             animEnemAr.start();
-            f -= 10 * (float) delta / 1000;
+            f -= 50 * (float) delta / 1000;
             if (f < 528) {
                 enem6 = false;
             }
         } else {
             animEnemAb.start();
-            f += 10 * (float) delta / 1000;
+            f += 50 * (float) delta / 1000;
             if (f > 592) {
                 enem6 = true;
             }
@@ -509,15 +516,15 @@ public class Personajes {
     }
 
     public void colisionesMono(int y1, int y2, int y3, int x4, int x5, int x6) {
-        rectEnem1 = new Rectangle(a, y1, 15, 22);
-        rectEnem2 = new Rectangle(b, y2, 15, 22);
-        rectEnem3 = new Rectangle(c, y3, 15, 22);
-        rectEnem4 = new Rectangle(x4, d, 18, 22);
-        rectEnem5 = new Rectangle(x5, e, 18, 22);
-        rectEnem6 = new Rectangle(x6, f, 18, 22);
+        rectEnem1 = new Rectangle(a + 2, y1 + 2, 11, 18);
+        rectEnem2 = new Rectangle(b + 2, y2 + 2, 11, 18);
+        rectEnem3 = new Rectangle(c + 2, y3 + 2, 11, 18);
+        rectEnem4 = new Rectangle(x4 + 2, d + 2, 14, 18);
+        rectEnem5 = new Rectangle(x5 + 2, e + 2, 14, 18);
+        rectEnem6 = new Rectangle(x6 + 2, f + 2, 14, 18);
     }
 
-    public void actualizarBab() {
+    public void actualizarEnem() {
         rectEnem1.setX(a);
         rectEnem2.setX(b);
         rectEnem3.setX(c);
