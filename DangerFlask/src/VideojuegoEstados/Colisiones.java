@@ -57,7 +57,7 @@ public class Colisiones {
     private Rectangle cambiarMapa2 = new Rectangle(1213, 275, 1, 45);
     private Rectangle cambiarMapa3 = new Rectangle(336, 638, 45, 1);
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
-    private Rectangle rectAnim = new Rectangle(x_, y_, 16, 27);
+    private Rectangle rectAnim = new Rectangle(x_+2, y_+2, 12, 23);
 
     public Rectangle getRectAnim() {
         return rectAnim;
@@ -116,8 +116,8 @@ public class Colisiones {
     }
 
     public void actualizar(float x, float y) {
-        rectAnim.setX(x);
-        rectAnim.setY(y);
+        rectAnim.setX(x+2);
+        rectAnim.setY(y+2);
     }
 
     public void dibujar(Graphics g) {

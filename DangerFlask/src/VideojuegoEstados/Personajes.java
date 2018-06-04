@@ -507,12 +507,12 @@ public class Personajes {
     }
 
     public void colisionesBab(int y1, int y2, int y3, int x4, int x5, int x6) {
-        rectEnem1 = new Rectangle(a, y1, 25, 15);
-        rectEnem2 = new Rectangle(b, y2, 25, 15);
-        rectEnem3 = new Rectangle(c, y3, 25, 15);
-        rectEnem4 = new Rectangle(x4, d, 14, 23);
-        rectEnem5 = new Rectangle(x5, e, 14, 23);
-        rectEnem6 = new Rectangle(x6, f, 14, 23);
+        rectEnem1 = new Rectangle(a + 2, y1 + 2, 21, 11);
+        rectEnem2 = new Rectangle(b + 2, y2 + 2, 21, 11);
+        rectEnem3 = new Rectangle(c + 2, y3 + 2, 21, 11);
+        rectEnem4 = new Rectangle(x4 + 2, d + 2, 10, 19);
+        rectEnem5 = new Rectangle(x5 + 2, e + 2, 10, 19);
+        rectEnem6 = new Rectangle(x6 + 2, f + 2, 10, 19);
     }
 
     public void colisionesMono(int y1, int y2, int y3, int x4, int x5, int x6) {
@@ -525,12 +525,12 @@ public class Personajes {
     }
 
     public void actualizarEnem() {
-        rectEnem1.setX(a);
-        rectEnem2.setX(b);
-        rectEnem3.setX(c);
-        rectEnem4.setY(d);
-        rectEnem5.setY(e);
-        rectEnem6.setY(f);
+        rectEnem1.setX(a + 2);
+        rectEnem2.setX(b + 2);
+        rectEnem3.setX(c + 2);
+        rectEnem4.setY(d + 2);
+        rectEnem5.setY(e + 2);
+        rectEnem6.setY(f + 2);
     }
 
     public boolean muere() {
