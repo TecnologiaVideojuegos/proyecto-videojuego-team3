@@ -3,6 +3,7 @@ package VideojuegoEstados;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -25,6 +26,7 @@ public class Mapa1 extends BasicGameState {
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);//Coordenadas de objetos
+    private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
 
@@ -41,6 +43,8 @@ public class Mapa1 extends BasicGameState {
         personaje.colisionesBab(576, 224, 496, 656, 816, 816);//variables estaticas de los enemigos
         obj.creaObjetos();
         obj.colObj();//posicion de los objetos
+        sonido.iniciarSonidos();
+        //tarjeta = new Sound("./Sonidos/coger_tarjeta.ogg");
     }
 
     @Override
@@ -81,6 +85,7 @@ public class Mapa1 extends BasicGameState {
         personaje.actualizarEnem();
 
         if (personaje.muere()) {
+            sonido.getJulian().play();
             x = 49;
             y = 288;
             obj.setB(true);
@@ -92,20 +97,24 @@ public class Mapa1 extends BasicGameState {
             }
         }
         if (col.cambiarMapa1()) {
+            sonido.getPuerta().play();
             game.enterState(1);
         }
         dentro = true;
         if (obj.botCol() && vidas.getVidas() < 6) {
             vidas.setVidas(vidas.getVidas() + 1);
             obj.setA(false);
+            sonido.getAdrenalina().play();
         }
         if (obj.tar1Col()) {
             col.setTarjeta1(col.getTarjeta1() + 1);
             obj.setB(false);
+            sonido.getTarjeta().play();
         }
         if (obj.tar2Col()) {
             col.setTarjeta1(col.getTarjeta1() + 1);
             obj.setC(false);
+            sonido.getTarjeta().play();
         }
     }
 
