@@ -25,6 +25,7 @@ public class Mapa4 extends BasicGameState {
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col, 1152, 576, 240, 384, 1024, 176);
+    private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     
@@ -41,6 +42,7 @@ public class Mapa4 extends BasicGameState {
         personaje.colisionesMono(272, 288, 576, 416, 1072, 656);
         obj.creaObjetos();
         obj.colObj();
+        sonido.iniciarSonidos();
     }
     
     @Override
@@ -81,6 +83,7 @@ public class Mapa4 extends BasicGameState {
         col.actualizar(x, y);
         personaje.actualizarEnem();
         if (personaje.muere()) {
+            sonido.getZacarias().play();
             x = 34;
             y = 275;
             obj.setB(true);
@@ -92,20 +95,24 @@ public class Mapa4 extends BasicGameState {
             }
         }
         if (col.cambiarMapa4()) {
+            sonido.getPuerta().play();
             game.enterState(4);
         }
         dentro = true;
         if (obj.botCol() && vidas.getVidas() < 6) {
             vidas.setVidas(vidas.getVidas() + 1);
             obj.setA(false);
+            sonido.getAdrenalina().play();
         }
         if (obj.tar1Col()) {
             col.setTarjeta4(col.getTarjeta4() + 1);
             obj.setB(false);
+            sonido.getTarjeta().play();
         }
         if (obj.tar2Col()) {
             col.setTarjeta4(col.getTarjeta4() + 1);
             obj.setC(false);
+            sonido.getTarjeta().play();
         }
     }
     
