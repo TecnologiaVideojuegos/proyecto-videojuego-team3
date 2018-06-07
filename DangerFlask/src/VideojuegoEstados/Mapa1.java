@@ -43,7 +43,6 @@ public class Mapa1 extends BasicGameState {
         obj.creaObjetos();
         obj.colObj();//posicion de los objetos
         sonido.iniciarSonidos();
-        //tarjeta = new Sound("./Sonidos/coger_tarjeta.ogg");
     }
 
     @Override
@@ -54,7 +53,6 @@ public class Mapa1 extends BasicGameState {
         personaje.dibujarPers(x, y);
         personaje.dibujarEnem(576, 224, 496, 656, 816, 816);
         vidas.dibujar(g);
-        col.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
     }

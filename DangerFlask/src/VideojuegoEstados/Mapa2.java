@@ -53,7 +53,6 @@ public class Mapa2 extends BasicGameState {
         personaje.dibujarPers(x, y);
         personaje.dibujarEnem(256, 496, 256, 560, -100, 992);
         vidas.dibujar(g);
-        col.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta2() + "/2", 400, 10);
     }

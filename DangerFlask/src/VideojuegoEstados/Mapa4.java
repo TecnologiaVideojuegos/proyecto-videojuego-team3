@@ -54,7 +54,6 @@ public class Mapa4 extends BasicGameState {
         personaje.dibujarPers(x, y);
         personaje.dibujarEnem(272, 288, 576, 416, 1072, 656);
         vidas.dibujar(g);
-        col.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta4() + "/2", 400, 10);
     }

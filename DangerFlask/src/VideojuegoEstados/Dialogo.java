@@ -71,7 +71,6 @@ public class Dialogo extends BasicGameState {
             game.enterState(0);
         }
         //CUANDO EL DIALOGO ESTE ESCRITO SE TERMINARA
-        //g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
     }
 
     @Override

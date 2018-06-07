@@ -9,7 +9,7 @@ import org.newdawn.slick.Sound;
  */
 public class Sonido {
 
-    private Sound puerta, tarjeta, julian, zacarias, adrenalina;
+    private Sound puerta, tarjeta, julian, zacarias, adrenalina, fondo;
 
     public Sonido() {
     }
@@ -20,6 +20,7 @@ public class Sonido {
         julian = new Sound("./Sonidos/julian_muerte.ogg");
         zacarias = new Sound("./Sonidos/zacarias_muerte.ogg");
         adrenalina = new Sound("./Sonidos/usar_adrenalina.ogg");
+        fondo = new Sound("./Sonidos/testloop.ogg");
     }
 
     public Sound getPuerta() {
@@ -40,5 +41,9 @@ public class Sonido {
 
     public Sound getAdrenalina() {
         return adrenalina;
+    }
+    
+    public Sound getFondo() {
+        return fondo;
     }
 }

@@ -120,13 +120,6 @@ public class Colisiones {
         rectAnim.setY(y+2);
     }
 
-    public void dibujar(Graphics g) {
-        //g.drawRect(rectAnim.getX(), rectAnim.getY(), rectAnim.getWidth(), rectAnim.getHeight());
-        //g.drawRect(cambiarMapa2.getX(), cambiarMapa2.getY(), cambiarMapa2.getWidth(), cambiarMapa2.getHeight());
-        //g.drawRect(rectBabosa.getX(), rectBabosa.getY(), rectBabosa.getWidth(), rectBabosa.getHeight());
-
-    }
-
     public boolean cambiarMapa1() {
         if (rectAnim.intersects(cambiarMapa1)) {
             return true;
