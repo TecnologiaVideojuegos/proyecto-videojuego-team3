@@ -72,9 +72,6 @@ public class Objetos {
         bot = new Rectangle(xb, yb, 10, 23);
         tarj1 = new Rectangle(x1, y1, 20, 20);
         tarj2 = new Rectangle(x2, y2, 20, 20);
-//        bot = new Rectangle(992, 96, 10, 23);
-//        tarj1 = new Rectangle(48, 128, 20, 20);
-//        tarj2 = new Rectangle(1072, 176, 20, 20);
     }
 
     public boolean botCol() {

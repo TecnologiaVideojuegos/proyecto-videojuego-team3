@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 public class Vidas {
 
     private int vidas;
-    private Image v1, v2, v3, v4, v5, v6;
+    private Image v1, v2;
 
     public Vidas(int vidas) {
         this.vidas = vidas;
