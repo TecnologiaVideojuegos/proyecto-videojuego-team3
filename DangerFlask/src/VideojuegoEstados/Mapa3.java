@@ -39,7 +39,7 @@ public class Mapa3 extends BasicGameState {
         personaje.iniciarPersJulian();
         personaje.iniciarEnemMono();
         obstaculo = limiteMapa.crearLimite3(mapa);
-        personaje.colisionesMono(448, 432, 368, 128, 992, 336);
+        personaje.colisionesMono(448, 432, 362, 128, 992, 336);
         obj.creaObjetos();
         obj.colObj();
         sonido.iniciarSonidos();
@@ -51,7 +51,7 @@ public class Mapa3 extends BasicGameState {
         mapa.render(0, 0);
         g.resetTransform();
         personaje.dibujarPers(x, y);
-        personaje.dibujarEnem(448, 432, 368, 128, 992, 336);
+        personaje.dibujarEnem(448, 432, 362, 128, 992, 336);
         vidas.dibujar(g);
         col.dibujar(g);
         obj.dibuja();
