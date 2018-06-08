@@ -20,7 +20,7 @@ public class Sonido {
         julian = new Sound("./Sonidos/julian_muerte.ogg");
         zacarias = new Sound("./Sonidos/zacarias_muerte.ogg");
         adrenalina = new Sound("./Sonidos/usar_adrenalina.ogg");
-        fondo = new Sound("./Sonidos/testloop.ogg");
+        //fondo = new Sound("./Sonidos/testloop.ogg");
     }
 
     public Sound getPuerta() {

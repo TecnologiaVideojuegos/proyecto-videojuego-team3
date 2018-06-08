@@ -10,10 +10,10 @@ import org.newdawn.slick.state.StateBasedGame;
  * @author SergioSanzSacristan
  */
 public class Principal extends StateBasedGame {
-
+    
     private AppGameContainer container;
     private Vidas vidas = new Vidas(6);
-
+    
     public Principal() throws SlickException {
         super("Danger Flask");
         container = new AppGameContainer(this);
@@ -21,9 +21,10 @@ public class Principal extends StateBasedGame {
         container.setShowFPS(false);
         container.start();
     }
-
+    
     @Override
     public void initStatesList(GameContainer arg0) throws SlickException {
+        this.addState(new Menu());
         this.addState(new Dialogo());
         this.addState(new Mapa1(vidas));
         this.addState(new Mapa2(vidas));
@@ -31,7 +32,7 @@ public class Principal extends StateBasedGame {
         this.addState(new Mapa4(vidas));
         this.addState(new Portada());
     }
-
+    
     public static void main(String[] argv) {
         try {
             Principal juego = new Principal();
@@ -39,5 +40,5 @@ public class Principal extends StateBasedGame {
             e.printStackTrace();
         }
     }
-
+    
 }
