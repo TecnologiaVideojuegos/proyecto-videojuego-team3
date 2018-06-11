@@ -32,6 +32,7 @@ public class Principal extends StateBasedGame {
         this.addState(new Mapa4(vidas));    //5
         this.addState(new DialogoFinal());  //6
         this.addState(new Portada());       //7
+        this.addState(new Controles());     //8
     }
     
     public static void main(String[] argv) {
