@@ -1,5 +1,8 @@
 package VideojuegoEstados;
 
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -39,6 +42,11 @@ public class Dialogo extends BasicGameState {
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
         if(container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Dialogo.class.getName()).log(Level.SEVERE, null, ex);
+            }
             game.enterState(2);
         }
         if (i == 1) {

@@ -32,7 +32,7 @@ public class Opciones extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if(container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             game.enterState(0);
         }
     }

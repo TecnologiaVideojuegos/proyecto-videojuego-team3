@@ -1,7 +1,11 @@
 package VideojuegoEstados;
 
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -89,6 +93,16 @@ public class Mapa4 extends BasicGameState {
         y = personaje.getY();
         col.actualizar(x, y);
         personaje.actualizarEnem();
+        
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Mapa1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            game.enterState(9);
+        }
+        
         if (personaje.muere()) {
             sonido.getZacariasDead().play();
             x = 34;
