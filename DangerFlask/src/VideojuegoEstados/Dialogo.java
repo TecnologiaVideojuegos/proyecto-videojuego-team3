@@ -38,34 +38,34 @@ public class Dialogo extends BasicGameState {
         g.drawString("ZACARIAS:", 150, 380);
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         if (i == 1) {
-            g.drawString("TEXTO1", 180, 160);
+            g.drawString("Julián, la cámara.", 150, 400);
         }
         if (i == 2) {
-            g.drawString("TEXTO2", 150, 400);
+            g.drawString("Sí, doctor. Y... grabando.", 180, 160);
         }
         if (i == 3) {
-            g.drawString("TEXTO3", 180, 160);
+            g.drawString("23 de noviembre de 2078. Prueba número 103. Procedo a aplicarle el suero al sujeto nº 12...", 150, 400);
         }
         if (i == 4) {
-            g.drawString("TEXTO4", 150, 400);
+            g.drawString("...", 180, 160);
         }
         if (i == 5) {
-            g.drawString("TEXTO5", 180, 160);
+            g.drawString("Los resultados, los cuales seguramente serán otra mierd...", 150, 400);
         }
         if (i == 6) {
-            g.drawString("TEXTO6", 150, 400);
+            g.drawString("¡Doctor!", 180, 160);
         }
         if (i == 7) {
-            g.drawString("TEXTO7", 180, 160);
+            g.drawString("Perdón, perdón. Los resultados deberían manifestarse en tres horas o así, hasta entonces \nesperaremos con las fuerzas que nos queda. Que la ciencia nos ayude. Un saludo. Ya está, \npara de grabar.", 150, 400);
         }
         if (i == 8) {
-            g.drawString("TEXTO8", 150, 400);
+            g.drawString("Hecho.", 180, 160);
         }
         if (i == 9) {
-            g.drawString("TEXTO9", 180, 160);
+            g.drawString("TEXTO9", 150, 400);
         }
         if (i == 10) {
-            g.drawString("TEXTO10", 150, 400);
+            g.drawString("TEXTO10", 180, 160);
         }
         if (i == 11){
             game.enterState(0);
