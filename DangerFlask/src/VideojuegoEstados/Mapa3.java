@@ -58,6 +58,7 @@ public class Mapa3 extends BasicGameState {
         vidas.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta3() + "/2", 400, 10);
+        g.drawString("Pulse ESC para pausar.", 700, 10);
     }
 
     @Override
