@@ -89,8 +89,40 @@ public class Dialogo extends BasicGameState {
             g.scale(2, 2);
             g.drawString("VAN A VER LOS RESULTADOS", 200, 150);
             g.resetTransform();
-        }        
+        }
         if (i == 17) {
+            g.drawString("Vale, nada mal por aquí... veamos los anticuerpos...", 150, 400);
+        }
+        if (i == 18) {
+            g.drawString("¡Doctor!", 180, 160);
+        }
+        if (i == 19) {
+            g.drawString("No puede ser.", 150, 400);
+        }
+        if (i == 20) {
+            g.drawString("¡Sí puede ser, doctor! ¡Sí puede! ¡Lo logramos!", 180, 160);
+        }
+        if (i == 21) {
+            g.drawString("Es-espera, Julián. Esto no puede ser... no me lo creo...", 150, 400);
+        }
+        if (i == 22) {
+            g.drawString("¡Mira el maldito virus! ¡Está siendo aniquilado! ", 180, 160);
+        }
+        if (i == 23) {
+            g.drawString("No es un sueño... ¡Hemos salvado al mundo Julián! ¡A tu madre! A... ¡A Leo!", 150, 400);
+        }
+        if (i == 24) {
+            g.drawString("¡Pero no llores que lloro yo también!", 180, 160);
+        }
+        if (i == 25) {
+            g.drawString("Vamos a tirar todo esto ya. ¡Adiós a todas las otras pruebas! No quiero verlas ni en pintura.\nVoy", 150, 400);
+        }
+        if (i == 26) {
+            g.scale(2, 2);
+            g.drawString("SUENA ALGO", 250, 150);
+            g.resetTransform();
+        }        
+        if (i == 27) {
             game.enterState(0);
         }
         //CUANDO EL DIALOGO ESTE ESCRITO SE TERMINARA
