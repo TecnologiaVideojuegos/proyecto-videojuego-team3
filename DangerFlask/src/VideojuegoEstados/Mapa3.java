@@ -2,6 +2,7 @@ package VideojuegoEstados;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -17,7 +18,7 @@ public class Mapa3 extends BasicGameState {
 
     private TiledMap mapa;
     private float x = 34f, y = 499f;
-    private boolean dentro = true;
+    private boolean dentro = true, b = false;
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
@@ -28,6 +29,7 @@ public class Mapa3 extends BasicGameState {
     private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
+    private Music juliantheme;
 
     public Mapa3(Vidas vidas) {
         this.vidas = vidas;
@@ -43,6 +45,7 @@ public class Mapa3 extends BasicGameState {
         obj.creaObjetos();
         obj.colObj();
         sonido.iniciarSonidos();
+        juliantheme = new Music("./Musica/JulianTheme.ogg");
     }
 
     @Override
@@ -59,6 +62,10 @@ public class Mapa3 extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        if (!b) {
+            juliantheme.loop(1, 0.8f);
+            b = true;
+        }
         if (col.animDentro3(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -90,10 +97,12 @@ public class Mapa3 extends BasicGameState {
             col.setTarjeta3(0);
             vidas.setVidas(vidas.getVidas() - 1);
             if (vidas.getVidas() == 0) {
+                juliantheme.stop();
                 game.enterState(7, entra, sale);
             }
         }
         if (col.cambiarMapa3()) {
+                juliantheme.stop();
             sonido.getPuerta().play();
             game.enterState(5);
         }

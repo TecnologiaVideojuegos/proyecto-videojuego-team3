@@ -2,6 +2,7 @@ package VideojuegoEstados;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -14,10 +15,10 @@ import org.newdawn.slick.tiled.TiledMap;
  * @author SergioSanzSacristan
  */
 public class Mapa4 extends BasicGameState {
-    
+
     private TiledMap mapa;
     private float x = 34f, y = 275f;
-    private boolean dentro = true;
+    private boolean dentro = true, b = false;
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
@@ -28,11 +29,12 @@ public class Mapa4 extends BasicGameState {
     private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
-    
+    private Music zacariastheme;
+
     public Mapa4(Vidas vidas) {
         this.vidas = vidas;
     }
-    
+
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         mapa = new TiledMap("./juego/mapa_final2.2.tmx", "juego");
@@ -43,11 +45,12 @@ public class Mapa4 extends BasicGameState {
         obj.creaObjetos();
         obj.colObj();
         sonido.iniciarSonidos();
+        zacariastheme = new Music("./Musica/ZacariasTheme.ogg");
     }
-    
+
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        
+
         g.scale(0.5f, 0.5f);
         mapa.render(0, 0);
         g.resetTransform();
@@ -57,9 +60,13 @@ public class Mapa4 extends BasicGameState {
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta4() + "/2", 400, 10);
     }
-    
+
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        if (!b) {
+            zacariastheme.loop(1, 0.5f);
+            b = true;
+        }
         if (col.animDentro4(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -114,7 +121,7 @@ public class Mapa4 extends BasicGameState {
             sonido.getTarjeta().play();
         }
     }
-    
+
     @Override
     public int getID() {
         return 5;
