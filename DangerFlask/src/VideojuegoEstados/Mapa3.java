@@ -82,7 +82,7 @@ public class Mapa3 extends BasicGameState {
         personaje.actualizarEnem();
 
         if (personaje.muere()) {
-            sonido.getJulian().play();
+            sonido.getJulianDead().play();
             x = 34;
             y = 499;
             obj.setB(true);

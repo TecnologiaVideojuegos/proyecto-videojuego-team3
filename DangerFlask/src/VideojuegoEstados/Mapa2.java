@@ -82,7 +82,7 @@ public class Mapa2 extends BasicGameState {
         personaje.actualizarEnem();
 
         if (personaje.muere()) {
-            sonido.getZacarias().play();
+            sonido.getZacariasDead().play();
             x = 34;
             y = 483;
             obj.setB(true);
