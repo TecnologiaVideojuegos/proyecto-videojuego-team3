@@ -49,7 +49,7 @@ public class Colisiones {
         this.tarjeta4 = tarjeta4;
     }
 
-    private Rectangle rectSalida1 = new Rectangle(1167, 495, 50, 25);
+    private Rectangle rectSalida1 = new Rectangle(1150, 495, 55, 30);
     private Rectangle rectSalida2 = new Rectangle(1167, 270, 50, 25);
     private Rectangle rectSalida3 = new Rectangle(335, 592, 50, 50);
     private Rectangle rectSalida4 = new Rectangle(478, 592, 50, 50);
@@ -57,7 +57,7 @@ public class Colisiones {
     private Rectangle cambiarMapa2 = new Rectangle(1213, 275, 1, 45);
     private Rectangle cambiarMapa3 = new Rectangle(336, 638, 45, 1);
     private Rectangle cambiarMapa4 = new Rectangle(480, 638, 45, 1);
-    private Rectangle rectAnim = new Rectangle(x_+2, y_+2, 12, 23);
+    private Rectangle rectAnim = new Rectangle(x_ + 2, y_ + 2, 12, 23);
 
     public Rectangle getRectAnim() {
         return rectAnim;
@@ -116,8 +116,8 @@ public class Colisiones {
     }
 
     public void actualizar(float x, float y) {
-        rectAnim.setX(x+2);
-        rectAnim.setY(y+2);
+        rectAnim.setX(x + 2);
+        rectAnim.setY(y + 2);
     }
 
     public boolean cambiarMapa1() {
