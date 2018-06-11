@@ -12,21 +12,21 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author SergioSanzSacristan
  */
-public class Controles extends BasicGameState {
+public class Opciones extends BasicGameState {
 
-    private Image controles;
+    private Image opciones;
 
-    public Controles() {
+    public Opciones() {
     }
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        controles = new Image("./Botones/Controles.png");
+        opciones = new Image("./Botones/Opciones.png");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        controles.draw(0, 0);
+        opciones.draw(0, 0);
         g.drawString("Pulse ESC para volver al menú.", 10, 10);
     }
 
@@ -39,6 +39,6 @@ public class Controles extends BasicGameState {
 
     @Override
     public int getID() {
-        return 8;
+        return 9;
     }
 }

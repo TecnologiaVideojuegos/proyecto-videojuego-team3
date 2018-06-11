@@ -53,7 +53,7 @@ public class Menu extends BasicGameState {
             }
             if (container.getInput().getMouseX() < 1100 && container.getInput().getMouseX() > 820
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
-                game.enterState(1);
+                game.enterState(9);
             }
         }
     }
