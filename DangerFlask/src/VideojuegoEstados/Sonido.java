@@ -9,7 +9,7 @@ import org.newdawn.slick.Sound;
  */
 public class Sonido {
 
-    private Sound puerta, tarjeta, juliandead, zacariasdead, adrenalina, menu, juliantheme, zacariastheme;
+    private Sound puerta, tarjeta, julian, zacarias, adrenalina, fondo;
 
     public Sonido() {
     }
@@ -17,12 +17,10 @@ public class Sonido {
     public void iniciarSonidos() throws SlickException {
         puerta = new Sound("./Sonidos/abrir_puerta.ogg");
         tarjeta = new Sound("./Sonidos/coger_tarjeta.ogg");
-        juliandead = new Sound("./Sonidos/julian_muerte.ogg");
-        zacariasdead = new Sound("./Sonidos/zacarias_muerte.ogg");
+        julian = new Sound("./Sonidos/julian_muerte.ogg");
+        zacarias = new Sound("./Sonidos/zacarias_muerte.ogg");
         adrenalina = new Sound("./Sonidos/usar_adrenalina.ogg");
-        menu = new Sound("./Musica/Menu.ogg");
-        juliantheme = new Sound("./Musica/JulianTheme.ogg");
-        zacariastheme = new Sound("./Musica/ZacariasTheme.ogg");
+        //fondo = new Sound("./Sonidos/testloop.ogg");
     }
 
     public Sound getPuerta() {
@@ -33,28 +31,19 @@ public class Sonido {
         return tarjeta;
     }
 
-    public Sound getJulianDead() {
-        return juliandead;
+    public Sound getJulian() {
+        return julian;
     }
 
-    public Sound getZacariasDead() {
-        return zacariasdead;
+    public Sound getZacarias() {
+        return zacarias;
     }
 
     public Sound getAdrenalina() {
         return adrenalina;
     }
-
-    public Sound getMenu() {
-        return menu;
+    
+    public Sound getFondo() {
+        return fondo;
     }
-
-    public Sound getJuliantheme() {
-        return juliantheme;
-    }
-
-    public Sound getZacariastheme() {
-        return zacariastheme;
-    }
-
 }

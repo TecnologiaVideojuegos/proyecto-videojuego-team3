@@ -2,7 +2,6 @@ package VideojuegoEstados;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +17,7 @@ public class Mapa2 extends BasicGameState {
 
     private TiledMap mapa;
     private float x = 34f, y = 483f;
-    private boolean dentro = true, b = false;
+    private boolean dentro = true;
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
@@ -29,7 +28,6 @@ public class Mapa2 extends BasicGameState {
     private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
-    private Music zacariastheme;
 
     public Mapa2(Vidas vidas) {
         this.vidas = vidas;
@@ -45,7 +43,6 @@ public class Mapa2 extends BasicGameState {
         obj.creaObjetos();
         obj.colObj();
         sonido.iniciarSonidos();
-        zacariastheme = new Music("./Musica/ZacariasTheme.ogg");
     }
 
     @Override
@@ -62,10 +59,6 @@ public class Mapa2 extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (!b) {
-            zacariastheme.loop(1, 0.5f);
-            b = true;
-        }
         if (col.animDentro2(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -89,7 +82,7 @@ public class Mapa2 extends BasicGameState {
         personaje.actualizarEnem();
 
         if (personaje.muere()) {
-            sonido.getZacariasDead().play();
+            sonido.getZacarias().play();
             x = 34;
             y = 483;
             obj.setB(true);
@@ -97,12 +90,10 @@ public class Mapa2 extends BasicGameState {
             col.setTarjeta2(0);
             vidas.setVidas(vidas.getVidas() - 1);
             if (vidas.getVidas() == 0) {
-                zacariastheme.stop();
                 game.enterState(7, entra, sale);
             }
         }
         if (col.cambiarMapa2()) {
-            zacariastheme.stop();
             sonido.getPuerta().play();
             game.enterState(4);
         }

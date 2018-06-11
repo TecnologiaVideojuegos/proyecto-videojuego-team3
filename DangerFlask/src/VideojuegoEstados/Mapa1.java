@@ -2,7 +2,6 @@ package VideojuegoEstados;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -18,7 +17,7 @@ public class Mapa1 extends BasicGameState {
 
     private TiledMap mapa;
     private float x = 49f, y = 288f;
-    private boolean dentro = true, b = false;
+    private boolean dentro = true;
     private int i;
     private Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
@@ -29,7 +28,6 @@ public class Mapa1 extends BasicGameState {
     private Sonido sonido = new Sonido();
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
-    private Music juliantheme;
 
     public Mapa1(Vidas vidas) {
         this.vidas = vidas;
@@ -45,7 +43,6 @@ public class Mapa1 extends BasicGameState {
         obj.creaObjetos();
         obj.colObj();//posicion de los objetos
         sonido.iniciarSonidos();
-        juliantheme = new Music("./Musica/JulianTheme.ogg");
     }
 
     @Override
@@ -58,15 +55,10 @@ public class Mapa1 extends BasicGameState {
         vidas.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
-
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (!b) {
-            juliantheme.loop(1, 0.8f);
-            b = true;
-        }
         if (col.animDentro1(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -90,7 +82,7 @@ public class Mapa1 extends BasicGameState {
         personaje.actualizarEnem();
 
         if (personaje.muere()) {
-            sonido.getJulianDead().play();
+            sonido.getJulian().play();
             x = 49;
             y = 288;
             obj.setB(true);
@@ -98,12 +90,10 @@ public class Mapa1 extends BasicGameState {
             col.setTarjeta1(0);
             vidas.setVidas(vidas.getVidas() - 1);
             if (vidas.getVidas() == 0) {
-                juliantheme.stop();
                 game.enterState(7, entra, sale);
             }
         }
         if (col.cambiarMapa1()) {
-            juliantheme.stop();
             sonido.getPuerta().play();
             game.enterState(3);
         }
