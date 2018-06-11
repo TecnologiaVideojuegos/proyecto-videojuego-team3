@@ -40,21 +40,21 @@ public class Menu extends BasicGameState {
         if (container.getInput().isMouseButtonDown(0)) {
             if (container.getInput().getMouseX() < 388 && container.getInput().getMouseX() > 105
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
-                game.enterState(5);
+                game.enterState(1);
             }
             if (container.getInput().getMouseX() < 746 && container.getInput().getMouseX() > 465
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
-                game.enterState(5);
+                game.enterState(1);
             }
             if (container.getInput().getMouseX() < 1100 && container.getInput().getMouseX() > 820
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
-                game.enterState(5);
+                game.enterState(1);
             }
         }
     }
 
     @Override
     public int getID() {
-        return 6;
+        return 0;
     }
 }

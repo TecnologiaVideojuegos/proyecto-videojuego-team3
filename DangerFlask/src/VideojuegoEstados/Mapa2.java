@@ -90,12 +90,12 @@ public class Mapa2 extends BasicGameState {
             col.setTarjeta2(0);
             vidas.setVidas(vidas.getVidas() - 1);
             if (vidas.getVidas() == 0) {
-                game.enterState(4, entra, sale);
+                game.enterState(7, entra, sale);
             }
         }
         if (col.cambiarMapa2()) {
             sonido.getPuerta().play();
-            game.enterState(2);
+            game.enterState(4);
         }
         dentro = true;
         if (obj.botCol() && vidas.getVidas() < 6) {
@@ -117,6 +117,6 @@ public class Mapa2 extends BasicGameState {
 
     @Override
     public int getID() {
-        return 1;
+        return 3;
     }
 }

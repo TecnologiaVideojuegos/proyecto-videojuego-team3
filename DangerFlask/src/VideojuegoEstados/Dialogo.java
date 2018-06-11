@@ -39,7 +39,7 @@ public class Dialogo extends BasicGameState {
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
         if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
-            game.enterState(0);
+            game.enterState(2);
         }
         if (i == 1) {
             g.drawString("Julián, la cámara.", 150, 400);
@@ -144,7 +144,7 @@ public class Dialogo extends BasicGameState {
             g.drawString("Eso me temo.  Descuida.", 150, 400);
         }        
         if (i == 33) {
-            game.enterState(0);
+            game.enterState(2);
         }
     }
 
@@ -157,6 +157,6 @@ public class Dialogo extends BasicGameState {
 
     @Override
     public int getID() {
-        return 5;
+        return 1;
     }
 }

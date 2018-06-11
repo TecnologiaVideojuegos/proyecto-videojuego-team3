@@ -24,13 +24,14 @@ public class Principal extends StateBasedGame {
     
     @Override
     public void initStatesList(GameContainer arg0) throws SlickException {
-        this.addState(new Menu());
-        this.addState(new Dialogo());
-        this.addState(new Mapa1(vidas));
-        this.addState(new Mapa2(vidas));
-        this.addState(new Mapa3(vidas));
-        this.addState(new Mapa4(vidas));
-        this.addState(new Portada());
+        this.addState(new Menu());          //0
+        this.addState(new Dialogo());       //1
+        this.addState(new Mapa1(vidas));    //2
+        this.addState(new Mapa2(vidas));    //3
+        this.addState(new Mapa3(vidas));    //4
+        this.addState(new Mapa4(vidas));    //5
+        this.addState(new DialogoFinal());  //6
+        this.addState(new Portada());       //7
     }
     
     public static void main(String[] argv) {
