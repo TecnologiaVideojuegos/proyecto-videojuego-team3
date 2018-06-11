@@ -34,10 +34,13 @@ public class Dialogo extends BasicGameState {
         g.resetTransform();
         g.drawRect(170, 130, 875, 145);
         g.drawRect(140, 370, 875, 145);
-        g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
         g.drawString("JULIAN:", 180, 140);
         g.drawString("ZACARIAS:", 150, 380);
-        //g.drawString("Pulse ENTER para avanzar", 10, 10);
+        g.drawString("Pulse ENTER para avanzar", 10, 10);
+        g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
+        if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
+            game.enterState(0);
+        }
         if (i == 1) {
             g.drawString("Julián, la cámara.", 150, 400);
         }
@@ -121,11 +124,28 @@ public class Dialogo extends BasicGameState {
             g.scale(2, 2);
             g.drawString("SUENA ALGO", 250, 150);
             g.resetTransform();
-        }        
+        }
         if (i == 27) {
+            g.drawString("¡Doctor! El sujeto número 11 y 8 están descontrolados. Parece ser que los sueros que les dimos \nlos están... ¡¿Mutando?! ¡Van a romper la jaula!", 180, 160);
+        }
+        if (i == 28) {
+            g.drawString("¡No! ¡Que no escapen! ¡Van a romper todo! ¡No dejes que te arañen! ¡Un mínimo contacto con tu \nsangre y te contagiarán el virus en su peor fase!", 150, 400);
+        }
+        if (i == 29) {
+            g.drawString("¡No! ¡La ha roto! ¡La cura! ¡No puede ser! ", 180, 160);
+        }
+        if (i == 30) {
+            g.drawString("¡Tranquilo! ¡Tranquilo! Siempre guardo otro suero idéntico en la despensa del laboratorio. Pero,\ntengo que ir primero a activar el sistema de emergencia para que no salgan de aquí. Ve yendo \nhacia la despensa, te alcanzaré. ¡Recuerda que ahora necesitarás las tarjetas para abrir las \npuertas!", 150, 400);
+        }
+        if (i == 31) {
+            g.drawString("¿Y eso estaba...? ¡Da igual, voy para allá! Pero... están atacando a todos los demás sujetos. \nDentro de poco tendremos un ejército de monstruos tras nosotros. ¡Ten cuidado, Zacarías!", 180, 160);
+        }
+        if (i == 32) {
+            g.drawString("Eso me temo.  Descuida.", 150, 400);
+        }        
+        if (i == 33) {
             game.enterState(0);
         }
-        //CUANDO EL DIALOGO ESTE ESCRITO SE TERMINARA
     }
 
     @Override
