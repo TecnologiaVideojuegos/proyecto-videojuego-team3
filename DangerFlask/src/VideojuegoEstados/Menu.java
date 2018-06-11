@@ -15,9 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState {
 
     private Image fondo, jugar, controles, opciones;
-    //private Sonido sonido = new Sonido();
     private Music menutheme;
-    private boolean b = false;
 
     public Menu() {
     }
