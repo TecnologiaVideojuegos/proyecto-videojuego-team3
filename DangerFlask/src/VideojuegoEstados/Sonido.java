@@ -9,7 +9,8 @@ import org.newdawn.slick.Sound;
  */
 public class Sonido {
 
-    private Sound puerta, tarjeta, juliandead, zacariasdead, adrenalina, menu, juliantheme, zacariastheme;
+    private Sound puerta, tarjeta, juliandead, zacariasdead, adrenalina;
+    private boolean sonidoOn = true, musicaOn = true;
 
     public Sonido() {
     }
@@ -20,9 +21,6 @@ public class Sonido {
         juliandead = new Sound("./Sonidos/julian_muerte.ogg");
         zacariasdead = new Sound("./Sonidos/zacarias_muerte.ogg");
         adrenalina = new Sound("./Sonidos/usar_adrenalina.ogg");
-        menu = new Sound("./Musica/Menu.ogg");
-        juliantheme = new Sound("./Musica/JulianTheme.ogg");
-        zacariastheme = new Sound("./Musica/ZacariasTheme.ogg");
     }
 
     public Sound getPuerta() {
@@ -45,16 +43,20 @@ public class Sonido {
         return adrenalina;
     }
 
-    public Sound getMenu() {
-        return menu;
+    public boolean isSonidoOn() {
+        return sonidoOn;
     }
 
-    public Sound getJuliantheme() {
-        return juliantheme;
+    public void setSonidoOn(boolean sonidoOn) {
+        this.sonidoOn = sonidoOn;
     }
 
-    public Sound getZacariastheme() {
-        return zacariastheme;
+    public boolean isMusicaOn() {
+        return musicaOn;
     }
 
+    public void setMusicaOn(boolean musicaOn) {
+        this.musicaOn = musicaOn;
+    }
+    
 }
