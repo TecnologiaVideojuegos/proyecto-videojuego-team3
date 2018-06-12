@@ -42,8 +42,8 @@ public class Opciones extends BasicGameState {
         if (!sonido.isSonidoOn()) {
             contorno2.draw(120, 393);
         }
-        //g.drawString("Pulse ESC para volver al menú.", 10, 10);
-        g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
+        g.drawString("Pulse ESC para volver al menú.", 10, 10);
+        //g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
     }
 
     @Override
