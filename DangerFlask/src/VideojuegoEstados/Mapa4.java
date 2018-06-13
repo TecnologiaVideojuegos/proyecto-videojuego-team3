@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
@@ -34,6 +35,7 @@ public class Mapa4 extends BasicGameState {
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     private Music zacariastheme;
+    private Image sonidoOn, sonidoOff;
 
     public Mapa4(Vidas vidas, Sonido sonido) {
         this.vidas = vidas;
@@ -51,6 +53,8 @@ public class Mapa4 extends BasicGameState {
         obj.colObj();
         sonido.iniciarSonidos();
         zacariastheme = new Music("./Musica/ZacariasTheme.ogg");
+        sonidoOn = new Image("./Interfaz/musicaON.png");
+        sonidoOff = new Image("./Interfaz/musicaOFF.png");
     }
 
     @Override
@@ -63,16 +67,29 @@ public class Mapa4 extends BasicGameState {
         personaje.dibujarEnem(272, 288, 576, 416, 1072, 656);
         vidas.dibujar(g);
         obj.dibuja();
-        g.drawString("Tarjetas recogidas: " + col.getTarjeta4() + "/2", 400, 10);
-        g.drawString("Pulse ESC para pausar.", 700, 10);
+        g.drawString("Tarjetas recogidas: " + col.getTarjeta4() + "/2", 310, 10);
+        g.drawString("Música: ", 550, 10);
+        g.drawString("Efectos de sonido: ", 690, 10);
+        g.drawString("Haga click para activar/desactivar \nmúsica y/o efectos de sonido", 910, 0);
+        if (sonido.isMusicaOn()) {
+            sonidoOn.draw(625, 5);
+        } else {
+            sonidoOff.draw(625, 5);
+        }
+        if (sonido.isSonidoOn()) {
+            sonidoOn.draw(860, 5);
+        } else {
+            sonidoOff.draw(860, 5);
+        }
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (!b) {
+        if (!b && sonido.isMusicaOn()) {
             zacariastheme.loop(1, 0.5f);
             b = true;
         }
+        
         if (col.animDentro4(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -88,6 +105,7 @@ public class Mapa4 extends BasicGameState {
                 y = y + 1;
             }
         }
+        
         i = personaje.movimiento(dentro, x, y, container, delta);
         personaje.movimientoEnem4(delta);
         x = personaje.getX();
@@ -105,7 +123,9 @@ public class Mapa4 extends BasicGameState {
         }
 
         if (personaje.muere()) {
-            sonido.getZacariasDead().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getZacariasDead().play();
+            }
             x = 34;
             y = 275;
             obj.setB(true);
@@ -116,25 +136,42 @@ public class Mapa4 extends BasicGameState {
                 game.enterState(7, entra, sale);
             }
         }
+        
         if (col.cambiarMapa4()) {
-            sonido.getPuerta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getPuerta().play();
+            }
             game.enterState(6);
         }
+        
         dentro = true;
+        
         if (obj.botCol() && vidas.getVidas() < 6) {
             vidas.setVidas(vidas.getVidas() + 1);
             obj.setA(false);
-            sonido.getAdrenalina().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getAdrenalina().play();
+            }
         }
+        
         if (obj.tar1Col()) {
             col.setTarjeta4(col.getTarjeta4() + 1);
             obj.setB(false);
-            sonido.getTarjeta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getTarjeta().play();
+            }
         }
+        
         if (obj.tar2Col()) {
             col.setTarjeta4(col.getTarjeta4() + 1);
             obj.setC(false);
-            sonido.getTarjeta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getTarjeta().play();
+            }
+        }
+
+        if (container.getInput().isMousePressed(0)) {
+            sonido.click(container, zacariastheme);
         }
     }
 
