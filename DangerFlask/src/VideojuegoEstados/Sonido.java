@@ -1,5 +1,7 @@
 package VideojuegoEstados;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 
@@ -58,5 +60,25 @@ public class Sonido {
     public void setMusicaOn(boolean musicaOn) {
         this.musicaOn = musicaOn;
     }
-    
+
+    public void click(GameContainer container, Music musica) {
+        if (container.getInput().getMouseX() < 657 && container.getInput().getMouseX() > 625
+                && container.getInput().getMouseY() < 32 && container.getInput().getMouseY() > 5) {
+            if (musicaOn) {
+                musica.stop();
+                musicaOn = false;
+            } else {
+                musica.loop(1, 0.5f);
+                musicaOn = true;
+            }
+        }
+        if (container.getInput().getMouseX() < 892 && container.getInput().getMouseX() > 860
+                && container.getInput().getMouseY() < 32 && container.getInput().getMouseY() > 5) {
+            if (sonidoOn) {
+                sonidoOn = false;
+            } else {
+                sonidoOn = true;
+            }
+        }
+    }
 }
