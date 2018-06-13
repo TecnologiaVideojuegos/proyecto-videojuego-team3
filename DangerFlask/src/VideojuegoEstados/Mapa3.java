@@ -30,13 +30,14 @@ public class Mapa3 extends BasicGameState {
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col, 576, 128, 64, 592, 1152, 224);
-    private Sonido sonido = new Sonido();
+    private Sonido sonido;
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     private Music juliantheme;
 
-    public Mapa3(Vidas vidas) {
+    public Mapa3(Vidas vidas, Sonido sonido) {
         this.vidas = vidas;
+        this.sonido = sonido;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class Mapa3 extends BasicGameState {
         col.actualizar(x, y);
         personaje.actualizarEnem();
 
-        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             try {
                 sleep(1000);
             } catch (InterruptedException ex) {
@@ -101,7 +102,7 @@ public class Mapa3 extends BasicGameState {
             }
             game.enterState(9);
         }
-        
+
         if (personaje.muere()) {
             sonido.getJulianDead().play();
             x = 34;
@@ -116,7 +117,7 @@ public class Mapa3 extends BasicGameState {
             }
         }
         if (col.cambiarMapa3()) {
-                juliantheme.stop();
+            juliantheme.stop();
             sonido.getPuerta().play();
             game.enterState(5);
         }

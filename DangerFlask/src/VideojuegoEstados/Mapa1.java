@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
@@ -30,13 +31,14 @@ public class Mapa1 extends BasicGameState {
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);//Coordenadas de objetos
-    private Sonido sonido = new Sonido();
+    private Sonido sonido;
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     private Music juliantheme;
 
-    public Mapa1(Vidas vidas) {
+    public Mapa1(Vidas vidas, Sonido sonido) {
         this.vidas = vidas;
+        this.sonido = sonido;
     }
 
     @Override
@@ -62,8 +64,6 @@ public class Mapa1 extends BasicGameState {
         vidas.dibujar(g);
         obj.dibuja();
         g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
-        g.drawString("Pulse ESC para pausar.", 700, 10);
-
     }
 
     @Override
@@ -94,7 +94,7 @@ public class Mapa1 extends BasicGameState {
         col.actualizar(x, y);
         personaje.actualizarEnem();
 
-        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             try {
                 sleep(1000);
             } catch (InterruptedException ex) {
@@ -102,7 +102,7 @@ public class Mapa1 extends BasicGameState {
             }
             game.enterState(9);
         }
-        
+
         if (personaje.muere()) {
             sonido.getJulianDead().play();
             x = 49;

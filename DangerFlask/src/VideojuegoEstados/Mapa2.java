@@ -30,13 +30,14 @@ public class Mapa2 extends BasicGameState {
     private LimitesMapa limiteMapa = new LimitesMapa();
     private Vidas vidas;
     private Objetos obj = new Objetos(col, 640, 112, 432, 416, 640, 416);
-    private Sonido sonido = new Sonido();
+    private Sonido sonido;
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     private Music zacariastheme;
 
-    public Mapa2(Vidas vidas) {
+    public Mapa2(Vidas vidas, Sonido sonido) {
         this.vidas = vidas;
+        this.sonido = sonido;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class Mapa2 extends BasicGameState {
         col.actualizar(x, y);
         personaje.actualizarEnem();
 
-        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             try {
                 sleep(1000);
             } catch (InterruptedException ex) {
@@ -101,7 +102,7 @@ public class Mapa2 extends BasicGameState {
             }
             game.enterState(9);
         }
-        
+
         if (personaje.muere()) {
             sonido.getZacariasDead().play();
             x = 34;

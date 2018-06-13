@@ -15,9 +15,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Opciones extends BasicGameState {
 
     private Image opciones, contorno, contorno2;
-    private Sonido sonido = new Sonido();
+    private Sonido sonido;
 
-    public Opciones() {
+    public Opciones(Sonido sonido) {
+        this.sonido = sonido;
     }
 
     @Override
