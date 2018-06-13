@@ -16,9 +16,12 @@ public class Menu extends BasicGameState {
 
     private Image fondo, jugar, controles, opciones;
     private Music menutheme;
+    private boolean b = false;
+    private Sonido sonido;
 
-    public Menu(Music menutheme) {
+    public Menu(Sonido sonido, Music menutheme) {
         this.menutheme = menutheme;
+        this.sonido = sonido;
     }
 
     @Override
@@ -27,7 +30,6 @@ public class Menu extends BasicGameState {
         jugar = new Image("./Botones/ButtonPlay.png");
         controles = new Image("./Botones/ButtonControls.png");
         opciones = new Image("./Botones/ButtonOptions.png");
-        menutheme.loop(1f, 0.5f);
     }
 
     @Override
@@ -40,10 +42,15 @@ public class Menu extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        if (!b && sonido.isMusicaOn()) {
+            menutheme.loop(1, 0.5f);
+            b = true;
+        }
         if (container.getInput().isMouseButtonDown(0)) {
             if (container.getInput().getMouseX() < 388 && container.getInput().getMouseX() > 105
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
                 menutheme.stop();
+                b = false;
                 game.enterState(1);
             }
             if (container.getInput().getMouseX() < 746 && container.getInput().getMouseX() > 465

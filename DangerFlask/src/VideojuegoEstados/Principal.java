@@ -27,7 +27,7 @@ public class Principal extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer arg0) throws SlickException {
-        this.addState(new Menu(menutheme));          //0
+        this.addState(new Menu(sonido, menutheme));          //0
         this.addState(new Dialogo());       //1
         this.addState(new Mapa1(vidas, sonido));    //2
         this.addState(new Mapa2(vidas, sonido));    //3
