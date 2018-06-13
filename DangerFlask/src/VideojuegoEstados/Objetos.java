@@ -4,6 +4,10 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
+/**
+ *
+ * @author SergioSanzSactistan
+ */
 public class Objetos {
 
     private Colisiones col;

@@ -88,7 +88,7 @@ public class Mapa3 extends BasicGameState {
             juliantheme.loop(1, 0.5f);
             b = true;
         }
-        
+
         if (col.animDentro3(obstaculo, x, y)) {
             dentro = false;
             if (i == 6) {
@@ -104,7 +104,7 @@ public class Mapa3 extends BasicGameState {
                 y = y + 1;
             }
         }
-        
+
         i = personaje.movimiento(dentro, x, y, container, delta);
         personaje.movimientoEnem3(delta);
         x = personaje.getX();
@@ -136,7 +136,7 @@ public class Mapa3 extends BasicGameState {
                 game.enterState(7, entra, sale);
             }
         }
-        
+
         if (col.cambiarMapa3()) {
             juliantheme.stop();
             if (sonido.isSonidoOn()) {
@@ -144,9 +144,9 @@ public class Mapa3 extends BasicGameState {
             }
             game.enterState(5);
         }
-        
+
         dentro = true;
-        
+
         if (obj.botCol() && vidas.getVidas() < 6) {
             vidas.setVidas(vidas.getVidas() + 1);
             obj.setA(false);
@@ -154,7 +154,7 @@ public class Mapa3 extends BasicGameState {
                 sonido.getAdrenalina().play();
             }
         }
-        
+
         if (obj.tar1Col()) {
             col.setTarjeta3(col.getTarjeta3() + 1);
             obj.setB(false);
@@ -162,7 +162,7 @@ public class Mapa3 extends BasicGameState {
                 sonido.getTarjeta().play();
             }
         }
-        
+
         if (obj.tar2Col()) {
             col.setTarjeta3(col.getTarjeta3() + 1);
             obj.setC(false);

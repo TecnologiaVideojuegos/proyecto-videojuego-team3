@@ -3,6 +3,7 @@ package VideojuegoEstados;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -11,26 +12,29 @@ import org.newdawn.slick.state.StateBasedGame;
  *
  * @author SergioSanzSacristan
  */
-public class Portada extends BasicGameState {
+public class GameOver extends BasicGameState {
 
-    private Image portada;
+    private Image gameover;
 
-    public Portada() {
+    public GameOver() {
     }
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        portada = new Image("./juego/portada.jpg");
+        gameover = new Image("./Botones/gameover.jpg");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        portada.draw(41, 0);
+        gameover.draw(41, 0);
+        g.drawString("Pulse ESC para volver al menú principal", 10, 10);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
+            game.enterState(0);
+        }
     }
 
     @Override

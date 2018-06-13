@@ -41,7 +41,7 @@ public class Dialogo extends BasicGameState {
         g.drawString("ZACARIAS:", 150, 380);
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
-        if(container.getInput().isKeyDown(Input.KEY_ESCAPE)){
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             try {
                 sleep(1000);
             } catch (InterruptedException ex) {
@@ -150,7 +150,7 @@ public class Dialogo extends BasicGameState {
         }
         if (i == 32) {
             g.drawString("Eso me temo.  Descuida.", 150, 400);
-        }        
+        }
         if (i == 33) {
             game.enterState(2);
         }

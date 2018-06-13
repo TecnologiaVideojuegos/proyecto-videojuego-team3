@@ -34,7 +34,7 @@ public class Principal extends StateBasedGame {
         this.addState(new Mapa3(vidas, sonido));    //4
         this.addState(new Mapa4(vidas, sonido));    //5
         this.addState(new DialogoFinal());  //6
-        this.addState(new Portada());       //7
+        this.addState(new GameOver());       //7
         this.addState(new Controles());     //8
         this.addState(new Opciones(sonido, menutheme));      //9
     }

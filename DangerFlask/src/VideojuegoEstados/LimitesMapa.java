@@ -36,7 +36,7 @@ public class LimitesMapa {
         }
         return obstaculo;
     }
-    
+
     public boolean[][] crearLimite3(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
@@ -51,7 +51,7 @@ public class LimitesMapa {
         }
         return obstaculo;
     }
-    
+
     public boolean[][] crearLimite4(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;

@@ -64,7 +64,7 @@ public class DialogoFinal extends BasicGameState {
         }
         if (i == 8) {
             g.drawString("Bien, ¡no puedo esperar más! ", 180, 160);
-        }        
+        }
         if (i == 9) {
             game.enterState(0);
         }
