@@ -35,6 +35,7 @@ public class Mapa1 extends BasicGameState {
     private FadeInTransition entra = new FadeInTransition();
     private FadeOutTransition sale = new FadeOutTransition();
     private Music juliantheme;
+    private Image sonidoOn, sonidoOff;
 
     public Mapa1(Vidas vidas, Sonido sonido) {
         this.vidas = vidas;
@@ -52,6 +53,8 @@ public class Mapa1 extends BasicGameState {
         obj.colObj();//posicion de los objetos
         sonido.iniciarSonidos();
         juliantheme = new Music("./Musica/JulianTheme.ogg");
+        sonidoOn = new Image("./Interfaz/musicaON.png");
+        sonidoOff = new Image("./Interfaz/musicaOFF.png");
     }
 
     @Override
@@ -63,12 +66,25 @@ public class Mapa1 extends BasicGameState {
         personaje.dibujarEnem(576, 224, 496, 656, 816, 816);
         vidas.dibujar(g);
         obj.dibuja();
-        g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 400, 10);
+        g.drawString("Tarjetas recogidas: " + col.getTarjeta1() + "/2", 310, 10);
+        g.drawString("Música: ", 550, 10);
+        g.drawString("Efectos de sonido: ", 690, 10);
+        g.drawString("Haga click para activar/desactivar \nmúsica y/o efectos de sonido", 910, 0);
+        if (sonido.isMusicaOn()) {
+            sonidoOn.draw(625, 5);
+        } else {
+            sonidoOff.draw(625, 5);
+        }
+        if (sonido.isSonidoOn()) {
+            sonidoOn.draw(860, 5);
+        } else {
+            sonidoOff.draw(860, 5);
+        }
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (!b) {
+        if (!b && sonido.isMusicaOn()) {
             juliantheme.loop(1, 0.8f);
             b = true;
         }
@@ -104,7 +120,9 @@ public class Mapa1 extends BasicGameState {
         }
 
         if (personaje.muere()) {
-            sonido.getJulianDead().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getJulianDead().play();
+            }
             x = 49;
             y = 288;
             obj.setB(true);
@@ -118,24 +136,32 @@ public class Mapa1 extends BasicGameState {
         }
         if (col.cambiarMapa1()) {
             juliantheme.stop();
-            sonido.getPuerta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getPuerta().play();
+            }
             game.enterState(3);
         }
         dentro = true;
         if (obj.botCol() && vidas.getVidas() < 6) {
             vidas.setVidas(vidas.getVidas() + 1);
             obj.setA(false);
-            sonido.getAdrenalina().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getAdrenalina().play();
+            }
         }
         if (obj.tar1Col()) {
             col.setTarjeta1(col.getTarjeta1() + 1);
             obj.setB(false);
-            sonido.getTarjeta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getTarjeta().play();
+            }
         }
         if (obj.tar2Col()) {
             col.setTarjeta1(col.getTarjeta1() + 1);
             obj.setC(false);
-            sonido.getTarjeta().play();
+            if (sonido.isSonidoOn()) {
+                sonido.getTarjeta().play();
+            }
         }
     }
 

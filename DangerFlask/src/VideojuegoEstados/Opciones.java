@@ -4,6 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -16,9 +17,11 @@ public class Opciones extends BasicGameState {
 
     private Image opciones, contorno, contorno2;
     private Sonido sonido;
+    private Music menutheme;
 
-    public Opciones(Sonido sonido) {
+    public Opciones(Sonido sonido, Music menutheme) {
         this.sonido = sonido;
+        this.menutheme = menutheme;
     }
 
     @Override
@@ -44,7 +47,6 @@ public class Opciones extends BasicGameState {
             contorno2.draw(120, 393);
         }
         g.drawString("Pulse ESC para volver al menú.", 10, 10);
-        //g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
     }
 
     @Override
@@ -56,10 +58,12 @@ public class Opciones extends BasicGameState {
             if (container.getInput().getMouseX() < 930 && container.getInput().getMouseX() > 780
                     && container.getInput().getMouseY() < 315 && container.getInput().getMouseY() > 180) {
                 sonido.setMusicaOn(true);
+                menutheme.loop(1f, 0.5f);
             }
             if (container.getInput().getMouseX() < 430 && container.getInput().getMouseX() > 280
                     && container.getInput().getMouseY() < 315 && container.getInput().getMouseY() > 180) {
                 sonido.setMusicaOn(false);
+                menutheme.stop();
             }
             if (container.getInput().getMouseX() < 1075 && container.getInput().getMouseX() > 953
                     && container.getInput().getMouseY() < 482 && container.getInput().getMouseY() > 400) {

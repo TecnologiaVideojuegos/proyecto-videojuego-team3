@@ -2,6 +2,7 @@ package VideojuegoEstados;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -14,6 +15,7 @@ public class Principal extends StateBasedGame {
     private AppGameContainer container;
     private Vidas vidas = new Vidas(6);
     private Sonido sonido = new Sonido();
+    private Music menutheme = new Music("./Musica/Menu.ogg");
 
     public Principal() throws SlickException {
         super("Danger Flask");
@@ -25,7 +27,7 @@ public class Principal extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer arg0) throws SlickException {
-        this.addState(new Menu());          //0
+        this.addState(new Menu(menutheme));          //0
         this.addState(new Dialogo());       //1
         this.addState(new Mapa1(vidas, sonido));    //2
         this.addState(new Mapa2(vidas, sonido));    //3
@@ -34,7 +36,7 @@ public class Principal extends StateBasedGame {
         this.addState(new DialogoFinal());  //6
         this.addState(new Portada());       //7
         this.addState(new Controles());     //8
-        this.addState(new Opciones(sonido));      //9
+        this.addState(new Opciones(sonido, menutheme));      //9
     }
 
     public static void main(String[] argv) {

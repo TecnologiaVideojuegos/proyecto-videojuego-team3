@@ -25,47 +25,47 @@ public class Vidas {
         v1 = new Image("./Interfaz/spr_vida.png");
         v2 = new Image("./Interfaz/spr_vidamenos.png");
         if (vidas == 6) {
-            v1.draw(350, 10);
-            v1.draw(300, 10);
-            v1.draw(250, 10);
-            v1.draw(200, 10);
-            v1.draw(150, 10);
-            v1.draw(100, 10);
+            v1.draw(260, 10);
+            v1.draw(210, 10);
+            v1.draw(160, 10);
+            v1.draw(110, 10);
+            v1.draw(60, 10);
+            v1.draw(10, 10);
         } else if (vidas == 5) {
-            v2.draw(350, 10);
-            v1.draw(300, 10);
-            v1.draw(250, 10);
-            v1.draw(200, 10);
-            v1.draw(150, 10);
-            v1.draw(100, 10);
+            v2.draw(260, 10);
+            v1.draw(210, 10);
+            v1.draw(160, 10);
+            v1.draw(110, 10);
+            v1.draw(60, 10);
+            v1.draw(10, 10);
         } else if (vidas == 4) {
-            v2.draw(350, 10);
-            v2.draw(300, 10);
-            v1.draw(250, 10);
-            v1.draw(200, 10);
-            v1.draw(150, 10);
-            v1.draw(100, 10);
+            v2.draw(260, 10);
+            v2.draw(210, 10);
+            v1.draw(160, 10);
+            v1.draw(110, 10);
+            v1.draw(60, 10);
+            v1.draw(10, 10);
         } else if (vidas == 3) {
-            v2.draw(350, 10);
-            v2.draw(300, 10);
-            v2.draw(250, 10);
-            v1.draw(200, 10);
-            v1.draw(150, 10);
-            v1.draw(100, 10);
+            v2.draw(260, 10);
+            v2.draw(210, 10);
+            v2.draw(160, 10);
+            v1.draw(110, 10);
+            v1.draw(60, 10);
+            v1.draw(10, 10);
         } else if (vidas == 2) {
-            v2.draw(350, 10);
-            v2.draw(300, 10);
-            v2.draw(250, 10);
-            v2.draw(200, 10);
-            v1.draw(150, 10);
-            v1.draw(100, 10);
+            v2.draw(260, 10);
+            v2.draw(210, 10);
+            v2.draw(160, 10);
+            v2.draw(110, 10);
+            v1.draw(60, 10);
+            v1.draw(10, 10);
         } else if (vidas == 1) {
-            v2.draw(350, 10);
-            v2.draw(300, 10);
-            v2.draw(250, 10);
-            v2.draw(200, 10);
-            v2.draw(150, 10);
-            v1.draw(100, 10);
+            v2.draw(260, 10);
+            v2.draw(210, 10);
+            v2.draw(160, 10);
+            v2.draw(110, 10);
+            v2.draw(60, 10);
+            v1.draw(10, 10);
         }
     }
 }

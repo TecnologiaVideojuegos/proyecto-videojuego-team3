@@ -17,7 +17,8 @@ public class Menu extends BasicGameState {
     private Image fondo, jugar, controles, opciones;
     private Music menutheme;
 
-    public Menu() {
+    public Menu(Music menutheme) {
+        this.menutheme = menutheme;
     }
 
     @Override
@@ -26,7 +27,6 @@ public class Menu extends BasicGameState {
         jugar = new Image("./Botones/ButtonPlay.png");
         controles = new Image("./Botones/ButtonControls.png");
         opciones = new Image("./Botones/ButtonOptions.png");
-        menutheme = new Music("./Musica/Menu.ogg");
         menutheme.loop(1f, 0.5f);
     }
 
@@ -36,7 +36,6 @@ public class Menu extends BasicGameState {
         jugar.draw(105, 522);
         controles.draw(465, 522);
         opciones.draw(820, 522);
-        //g.drawString("X: " + container.getInput().getMouseX() + " Y: " + container.getInput().getMouseY(), 10, 10);
     }
 
     @Override
