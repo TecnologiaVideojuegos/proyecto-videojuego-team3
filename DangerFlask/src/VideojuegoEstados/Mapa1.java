@@ -24,18 +24,18 @@ public class Mapa1 extends BasicGameState {
     private boolean dentro = true, b = false;
     private int i;
     //Iniciamos la clase Colisiones con las coordenadas del personaje
-    private Colisiones col = new Colisiones(x, y);
+    private final Colisiones col = new Colisiones(x, y);
     private boolean[][] obstaculo;
     //Iniciamos la clase Personajes con las coordenadas variables de los enemigos
-    private Personajes personaje = new Personajes(col, 96, 304, 416, 368, 544, 400);
+    private final Personajes personaje = new Personajes(col, 96, 304, 416, 368, 544, 400);
     //Iniciamos la clase LimitesMapa
-    private LimitesMapa limiteMapa = new LimitesMapa();
-    private Vidas vidas;
+    private final LimitesMapa limiteMapa = new LimitesMapa();
+    private final Vidas vidas;
     //Iniciamos la clase Objetos con las coordenadas de los objetos
-    private Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);
-    private Sonido sonido;
-    private FadeInTransition entra = new FadeInTransition();
-    private FadeOutTransition sale = new FadeOutTransition();
+    private final Objetos obj = new Objetos(col, 992, 96, 48, 128, 1072, 176);
+    private final Sonido sonido;
+    private final FadeInTransition entra = new FadeInTransition();
+    private final FadeOutTransition sale = new FadeOutTransition();
     private Music juliantheme;
     private Image sonidoOn, sonidoOff;
 
