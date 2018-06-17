@@ -25,8 +25,8 @@ public class DialogoFinal extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         //Iniciamos las imagenes
-        julian = new Image("./juego/julian.png");
-        zacarias = new Image("./juego/zacarias.png");
+        julian = new Image("./Personajes/julian.png");
+        zacarias = new Image("./Personajes/zacarias.png");
     }
 
     @Override

@@ -34,7 +34,7 @@ public class GameOver extends BasicGameState {
 
         //Instrucciones a seguir en este estado
         g.drawString("Pulse ESC para volver al menú principal", 10, 10);
-
+        
         //Créditos
         g.drawString("Jorge Berbel Ruiz     -     Brianda Cabrera Riaza     -     Rafael Maderuelo Escolar     -     Sergio Sanz Sacristán", 60, 550);
         g.drawString("Dramalama Games", 10, 620);

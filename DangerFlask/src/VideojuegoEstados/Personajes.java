@@ -56,25 +56,25 @@ public class Personajes {
 
     //Método que inicia los sprites y las animaciones del personaje Julian
     public void iniciarPersJulian() throws SlickException {
-        spriteD = new SpriteSheet("./juego/spr_julian_derecha.png", 16, 26);
+        spriteD = new SpriteSheet("./Personajes/spr_julian_derecha.png", 16, 26);
         animD = new Animation(spriteD, 100);
-        spriteI = new SpriteSheet("./juego/spr_julian_izquierda.png", 16, 26);
+        spriteI = new SpriteSheet("./Personajes/spr_julian_izquierda.png", 16, 26);
         animI = new Animation(spriteI, 100);
-        spriteAr = new SpriteSheet("./juego/spr_julian_arriba.png", 17, 27);
+        spriteAr = new SpriteSheet("./Personajes/spr_julian_arriba.png", 17, 27);
         animAr = new Animation(spriteAr, 100);
-        spriteAb = new SpriteSheet("./juego/spr_julian_abajo.png", 17, 26);
+        spriteAb = new SpriteSheet("./Personajes/spr_julian_abajo.png", 17, 26);
         animAb = new Animation(spriteAb, 100);
     }
 
     //Método que inicia los sprites y las animaciones del personaje Zacarias
     public void iniciarPersZacarias() throws SlickException {
-        spriteD = new SpriteSheet("./juego/spr_zacarias_derecha.png", 14, 26);
+        spriteD = new SpriteSheet("./Personajes/spr_zacarias_derecha.png", 14, 26);
         animD = new Animation(spriteD, 100);
-        spriteI = new SpriteSheet("./juego/spr_zacarias_izquierda.png", 14, 26);
+        spriteI = new SpriteSheet("./Personajes/spr_zacarias_izquierda.png", 14, 26);
         animI = new Animation(spriteI, 100);
-        spriteAr = new SpriteSheet("./juego/spr_zacarias_arriba.png", 17, 26);
+        spriteAr = new SpriteSheet("./Personajes/spr_zacarias_arriba.png", 17, 26);
         animAr = new Animation(spriteAr, 100);
-        spriteAb = new SpriteSheet("./juego/spr_zacarias_abajo.png", 17, 27);
+        spriteAb = new SpriteSheet("./Personajes/spr_zacarias_abajo.png", 17, 27);
         animAb = new Animation(spriteAb, 100);
     }
 

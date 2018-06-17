@@ -48,7 +48,7 @@ public class Mapa1 extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         //Cargamos el mapa
-        mapa = new TiledMap("./juego/mapa_final1.1.tmx", "juego");
+        mapa = new TiledMap("./Mapas/mapa_final1.1.tmx");
 
         //Iniciamos los personajes y los enemigos con la clase Personajes
         personaje.iniciarPersJulian();
