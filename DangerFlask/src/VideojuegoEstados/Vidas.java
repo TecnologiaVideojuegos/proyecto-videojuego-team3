@@ -6,13 +6,16 @@ import org.newdawn.slick.SlickException;
 
 public class Vidas {
 
+    //Atributos
     private int vidas;
     private Image v1, v2;
 
+    //Constructor
     public Vidas(int vidas) {
         this.vidas = vidas;
     }
 
+    //Métodos Get y Set necesarios
     public int getVidas() {
         return vidas;
     }
@@ -21,9 +24,13 @@ public class Vidas {
         this.vidas = vidas;
     }
 
+    //Este método dibuja las vidas en el mapa, dependiendo de las vidas que tiene...
+    //...pone tantos corazones, y las vidas perdidas con corazones rotos
     public void dibujar(Graphics g) throws SlickException {
+        //Inicia las vidas
         v1 = new Image("./Interfaz/spr_vida.png");
         v2 = new Image("./Interfaz/spr_vidamenos.png");
+        
         if (vidas == 6) {
             v1.draw(260, 10);
             v1.draw(210, 10);
