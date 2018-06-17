@@ -9,15 +9,24 @@ import org.newdawn.slick.geom.Rectangle;
 
 public class Personajes {
 
+    //Atributos
+    //Sprites del personaje y de los enemigos segun su movimiento
     private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteEnemD, spriteEnemI, spriteEnemAr, spriteEnemAb;
+    //Animaciones del personaje y de los enemigos segun su movimiento
     private Animation animD, animI, animAr, animAb, animEnemD, animEnemI, animEnemAr, animEnemAb;
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false, enem1 = true, enem2 = true, enem3 = true,
-            enem4 = true, enem5 = true, enem6 = true;
+    //Booleans que detectan la direccion del movimiento del personaje
+    private boolean derecha = true, arriba = false, izquierda = false, abajo = false;
+    //Booleans que detectan la direccion del movimiento de los enemigos, si es true, es que la...
+    //...direccion es la inicial y si esta a false es la contraria.
+    private boolean enem1 = true, enem2 = true, enem3 = true, enem4 = true, enem5 = true, enem6 = true;
+    //Variable i
     private int i = 6;
+    //Coordenadas
     private float x_, y_, a, b, c, d, e, f;
-    private Colisiones col;
+    private final Colisiones col;
     private Rectangle rectEnem1, rectEnem2, rectEnem3, rectEnem4, rectEnem5, rectEnem6;
 
+    //Constructor
     public Personajes(Colisiones col, int a, int b, int c, int d, int e, int f) {
         this.col = col;
         this.a = a;
@@ -28,6 +37,7 @@ public class Personajes {
         this.f = f;
     }
 
+    //Métodos Get y Set necesarios
     public float getX() {
         return x_;
     }
@@ -44,6 +54,7 @@ public class Personajes {
         this.y_ = y_;
     }
 
+    //Método que inicia los sprites y las animaciones del personaje Julian
     public void iniciarPersJulian() throws SlickException {
         spriteD = new SpriteSheet("./juego/spr_julian_derecha.png", 16, 26);
         animD = new Animation(spriteD, 100);
@@ -54,7 +65,8 @@ public class Personajes {
         spriteAb = new SpriteSheet("./juego/spr_julian_abajo.png", 17, 26);
         animAb = new Animation(spriteAb, 100);
     }
-
+    
+    //Método que inicia los sprites y las animaciones del personaje Zacarias
     public void iniciarPersZacarias() throws SlickException {
         spriteD = new SpriteSheet("./juego/spr_zacarias_derecha.png", 14, 26);
         animD = new Animation(spriteD, 100);
@@ -66,6 +78,7 @@ public class Personajes {
         animAb = new Animation(spriteAb, 100);
     }
 
+    //Método que inicia los sprites y las animaciones de las babosas enemigas
     public void iniciarEnemBab() throws SlickException {
         spriteEnemD = new SpriteSheet("./Enemigos/Babosa/spr_babosa_derecha.png", 25, 15);
         animEnemD = new Animation(spriteEnemD, 250);
@@ -77,6 +90,7 @@ public class Personajes {
         animEnemAb = new Animation(spriteEnemAb, 250);
     }
 
+    //Método que inicia los sprites y las animaciones de los monos enemigos
     public void iniciarEnemMono() throws SlickException {
         spriteEnemD = new SpriteSheet("./Enemigos/Mono/spr_mono2_derecha.png", 15, 22);
         animEnemD = new Animation(spriteEnemD, 150);
@@ -88,6 +102,7 @@ public class Personajes {
         animEnemAb = new Animation(spriteEnemAb, 150);
     }
 
+    //Método que dependiendo la direccion del movimiento del personaje dibuja una animacion u otra
     public void dibujarPers(float x, float y) {
         if (derecha) {
             animD.draw(x, y);
@@ -103,6 +118,7 @@ public class Personajes {
         }
     }
 
+    //Método que dependiendo la direccion del movimiento de los enemigos dibuja una animacion u otra
     public void dibujarEnem(int y1, int y2, int y3, int x4, int x5, int x6) {
         if (enem1) {
             animEnemD.draw(a, y1);
@@ -142,17 +158,23 @@ public class Personajes {
         }
     }
 
+    //Método que según pulses una dirección con los controles mueve el personaje en una dirección y otra
     public int movimiento(boolean dentro, float x, float y, GameContainer container, int delta) {
         x_ = x;
         y_ = y;
 
+        //Vamos a explicar este caso, si pulsa la flecha derecha y no ha colisionado con ninguna pared
         if (container.getInput().isKeyDown(Input.KEY_RIGHT) && dentro) {
+            //pone las variables a false menos la direccion a la que va, en este caso, la derecha
             derecha = true;
             arriba = false;
             izquierda = false;
             abajo = false;
+            //iniamos la animacion correspondiente a la direccion a la que va
             animD.start();
+            //desplazamos el personaje en este caso hacia la derecha, aumentamos la x
             x_ += 100 * (float) delta / 1000;
+            //Finalmente devolvemos la i que es un número que corresponde a una dirección, en este caso la derecha, el 6
             i = 6;
             return i;
         } else if (container.getInput().isKeyDown(Input.KEY_LEFT) && dentro) {
@@ -183,6 +205,8 @@ public class Personajes {
             i = 2;
             return i;
         } else {
+            //Esto significa que el personaje no se mueve entonces paramos las animaciones...
+            //...y las dejamos congeladas en un sprite determinado
             animD.stop();
             animI.stop();
             animAr.stop();
@@ -195,7 +219,11 @@ public class Personajes {
         }
     }
 
+    //En este método movemos los enemigos del mapa1 (Inteligencia Artificial)
     public void movimientoEnem1(int delta) {
+        //Por ejemplo aqui el enemigo 1 se mueve hacia la derecha hasta llegar...
+        //...a la x=288, entonces se pone a false su variable enem1 y cambia de sentido...
+        //...hasta la coordenada x=99. Y vuelve a comenzar el movimiento.
         if (enem1) {
             animEnemD.start();
             a += 10 * (float) delta / 1000;
@@ -276,6 +304,7 @@ public class Personajes {
         }
     }
 
+    //En este método movemos los enemigos del mapa2 (Inteligencia Artificial)
     public void movimientoEnem2(int delta) {
         if (enem1) {
             animEnemD.start();
@@ -344,6 +373,7 @@ public class Personajes {
         }
     }
 
+    //En este método movemos los enemigos del mapa3 (Inteligencia Artificial)
     public void movimientoEnem3(int delta) {
         if (enem1) {
             animEnemD.start();
@@ -425,6 +455,7 @@ public class Personajes {
         }
     }
 
+    //En este método movemos los enemigos del mapa4 (Inteligencia Artificial)
     public void movimientoEnem4(int delta) {
         if (enem1) {
             animEnemD.start();
@@ -506,6 +537,7 @@ public class Personajes {
         }
     }
 
+    //Creamos los rectangulos que rodean a los enemigos para gestionar las colisiones con el personaje (Babosas)
     public void colisionesBab(int y1, int y2, int y3, int x4, int x5, int x6) {
         rectEnem1 = new Rectangle(a + 2, y1 + 2, 21, 11);
         rectEnem2 = new Rectangle(b + 2, y2 + 2, 21, 11);
@@ -515,6 +547,7 @@ public class Personajes {
         rectEnem6 = new Rectangle(x6 + 2, f + 2, 10, 19);
     }
 
+    //Creamos los rectangulos que rodean a los enemigos para gestionar las colisiones con el personaje (Monos)
     public void colisionesMono(int y1, int y2, int y3, int x4, int x5, int x6) {
         rectEnem1 = new Rectangle(a + 2, y1 + 2, 11, 18);
         rectEnem2 = new Rectangle(b + 2, y2 + 2, 11, 18);
@@ -524,6 +557,7 @@ public class Personajes {
         rectEnem6 = new Rectangle(x6 + 2, f + 2, 14, 18);
     }
 
+    //Este método sirve para actualizar las coordenadas de los rectangulos de colision de los enemigos
     public void actualizarEnem() {
         rectEnem1.setX(a + 2);
         rectEnem2.setX(b + 2);
@@ -533,6 +567,7 @@ public class Personajes {
         rectEnem6.setY(f + 2);
     }
 
+    //Este método devuelve true si el personaje colisiona con algún enemigo
     public boolean muere() {
         if (col.getRectAnim().intersects(rectEnem1) || col.getRectAnim().intersects(rectEnem2) || col.getRectAnim().intersects(rectEnem3)
                 || col.getRectAnim().intersects(rectEnem4) || col.getRectAnim().intersects(rectEnem5) || col.getRectAnim().intersects(rectEnem6)) {
