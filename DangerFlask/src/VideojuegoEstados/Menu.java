@@ -1,5 +1,6 @@
 package VideojuegoEstados;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -16,9 +17,9 @@ public class Menu extends BasicGameState {
 
     //Atributos
     private Image fondo, jugar, controles, opciones;
-    private Music menutheme;
+    private final Music menutheme;
     private boolean b = false;
-    private Sonido sonido;
+    private final Sonido sonido;
 
     //Constructor
     public Menu(Sonido sonido, Music menutheme) {
@@ -42,16 +43,22 @@ public class Menu extends BasicGameState {
         jugar.draw(105, 522);
         controles.draw(465, 522);
         opciones.draw(820, 522);
+
+        //Instrucciones a seguir en este estado
+        g.setColor(Color.black);
+        g.drawString("Haga click en la opcion que desee.", 10, 10);
+        g.setColor(Color.white);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        //Si el boolean b que sirve para detectar cuando nos encontramos en este estado...
+        //Si el boolean b es falso, que sirve para detectar cuando nos encontramos en este estado...
         //... y la música está activada, iniciamos la música del menú
         if (!b && sonido.isMusicaOn()) {
             menutheme.loop(1, 0.5f);
             b = true;
         }
+
         //Detectamos cuando clickamos en el menú
         if (container.getInput().isMouseButtonDown(0)) {
             //Si damos al botón JUGAR para la música pone el b a falso y entra en el estado 1
@@ -61,11 +68,13 @@ public class Menu extends BasicGameState {
                 b = false;
                 game.enterState(1);
             }
+
             //Si damos al botón CONTROLES entramos al estado 8
             if (container.getInput().getMouseX() < 746 && container.getInput().getMouseX() > 465
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {
                 game.enterState(8);
             }
+
             //Si damos al botón OPCIONES entramos al estado 9
             if (container.getInput().getMouseX() < 1100 && container.getInput().getMouseX() > 820
                     && container.getInput().getMouseY() < 590 && container.getInput().getMouseY() > 522) {

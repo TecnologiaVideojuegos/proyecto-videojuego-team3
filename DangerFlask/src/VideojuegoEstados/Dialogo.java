@@ -50,17 +50,7 @@ public class Dialogo extends BasicGameState {
         
         //Instrucciones a seguir en este estado
         g.drawString("Pulse ENTER para avanzar", 10, 10);
-        g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
-        
-        //Si pulsamos ESC nos manda al estado 2
-        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
-            try {
-                sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Dialogo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            game.enterState(2);
-        }
+        g.drawString("Pulse ESC para saltar el diálogo", 10, 40);     
         
         //Según la i que tengamos mostramos un mensaje u otro
         if (i == 1) {
@@ -175,6 +165,16 @@ public class Dialogo extends BasicGameState {
         //Si pulsamos ENTER aumentamos la variable i para que vaya avanzando el diálogo     
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             i++;
+        }
+        
+        //Si pulsamos ESC nos manda al estado 2
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Dialogo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            game.enterState(2);
         }
     }
 

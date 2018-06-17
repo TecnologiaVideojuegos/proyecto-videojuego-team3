@@ -49,11 +49,6 @@ public class DialogoFinal extends BasicGameState {
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
 
-        //Si pulsamos ESC nos manda al estado 0
-        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
-            game.enterState(0);
-        }
-
         //Según la i que tengamos mostramos un mensaje u otro
         if (i == 1) {
             g.drawString("¡Llegué! He tenido bastante suerte. Veamos dónde está el suero...", 180, 160);
@@ -89,6 +84,11 @@ public class DialogoFinal extends BasicGameState {
         //Si pulsamos ENTER aumentamos la variable i para que vaya avanzando el diálogo     
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             i++;
+        }
+        
+        //Si pulsamos ESC nos manda al estado 0
+        if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
+            game.enterState(0);
         }
     }
 

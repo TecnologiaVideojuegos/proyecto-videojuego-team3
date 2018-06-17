@@ -14,11 +14,11 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class GameOver extends BasicGameState {
 
-      //Atributos
-  private Image gameover;
+    //Atributos
+    private Image gameover;
 
-     //Constructor
-   public GameOver() {
+    //Constructor
+    public GameOver() {
     }
 
     @Override
@@ -31,7 +31,7 @@ public class GameOver extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         //Dibujamos la imagen
         gameover.draw(41, 0);
-        
+
         //Instrucciones a seguir en este estado
         g.drawString("Pulse ESC para volver al menú principal", 10, 10);
     }

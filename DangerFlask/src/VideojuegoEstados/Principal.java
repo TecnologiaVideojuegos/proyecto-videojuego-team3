@@ -13,10 +13,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Principal extends StateBasedGame {
 
     //Atributos
-    private AppGameContainer container;
-    private Vidas vidas = new Vidas(6);
-    private Sonido sonido = new Sonido();
-    private Music menutheme = new Music("./Musica/Menu.ogg");
+    private final AppGameContainer container;
+    private final Vidas vidas = new Vidas(6);
+    private final Sonido sonido = new Sonido();
+    private final Music menutheme = new Music("./Musica/Menu.ogg");
 
     //Constructor
     public Principal() throws SlickException {

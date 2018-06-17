@@ -36,6 +36,7 @@ public class Controles extends BasicGameState {
         //Instrucciones a seguir en este estado
         g.setColor(Color.black);
         g.drawString("Pulse ESC para volver al menú.", 10, 10);
+        g.setColor(Color.white);
     }
 
     @Override
