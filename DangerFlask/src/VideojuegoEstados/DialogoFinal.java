@@ -85,7 +85,7 @@ public class DialogoFinal extends BasicGameState {
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             i++;
         }
-        
+
         //Si pulsamos ESC nos manda al estado 0
         if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             game.enterState(0);

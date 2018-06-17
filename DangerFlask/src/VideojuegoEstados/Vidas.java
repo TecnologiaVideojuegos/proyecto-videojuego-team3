@@ -30,7 +30,7 @@ public class Vidas {
         //Inicia las vidas
         v1 = new Image("./Interfaz/spr_vida.png");
         v2 = new Image("./Interfaz/spr_vidamenos.png");
-        
+
         if (vidas == 6) {
             v1.draw(260, 10);
             v1.draw(210, 10);

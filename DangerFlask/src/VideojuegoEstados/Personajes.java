@@ -65,7 +65,7 @@ public class Personajes {
         spriteAb = new SpriteSheet("./juego/spr_julian_abajo.png", 17, 26);
         animAb = new Animation(spriteAb, 100);
     }
-    
+
     //Método que inicia los sprites y las animaciones del personaje Zacarias
     public void iniciarPersZacarias() throws SlickException {
         spriteD = new SpriteSheet("./juego/spr_zacarias_derecha.png", 14, 26);

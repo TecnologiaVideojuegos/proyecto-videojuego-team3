@@ -39,19 +39,19 @@ public class Dialogo extends BasicGameState {
         julian.draw(10, 20);
         zacarias.draw(170, 60);
         g.resetTransform();
-        
+
         //Dibujamos los dos rectángulos donde estará el diálogo
         g.drawRect(170, 130, 875, 145);
         g.drawRect(140, 370, 875, 145);
-        
+
         //Escribimos los nombres de los personajes
         g.drawString("JULIAN:", 180, 140);
         g.drawString("ZACARIAS:", 150, 380);
-        
+
         //Instrucciones a seguir en este estado
         g.drawString("Pulse ENTER para avanzar", 10, 10);
-        g.drawString("Pulse ESC para saltar el diálogo", 10, 40);     
-        
+        g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
+
         //Según la i que tengamos mostramos un mensaje u otro
         if (i == 1) {
             g.drawString("Julián, la cámara.", 150, 400);
@@ -166,7 +166,7 @@ public class Dialogo extends BasicGameState {
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             i++;
         }
-        
+
         //Si pulsamos ESC nos manda al estado 2
         if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             try {

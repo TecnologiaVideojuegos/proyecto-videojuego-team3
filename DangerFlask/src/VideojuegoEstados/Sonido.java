@@ -57,7 +57,7 @@ public class Sonido {
     public void setMusicaOn(boolean musicaOn) {
         this.musicaOn = musicaOn;
     }
-    
+
     //Este método inicia los sonidos
     public void iniciarSonidos() throws SlickException {
         puerta = new Sound("./Sonidos/abrir_puerta.ogg");
