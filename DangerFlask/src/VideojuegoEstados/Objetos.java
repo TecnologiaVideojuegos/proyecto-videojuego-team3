@@ -10,9 +10,14 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Objetos {
 
-    private Colisiones col;
-    private int xb, yb, x1, y1, x2, y2;
+    //Atributos
+    private final Colisiones col;
+    private final int xb, yb, x1, y1, x2, y2;
+    private Image botiquin, tarjeta1, tarjeta2;
+    private Rectangle bot, tarj1, tarj2;
+    private boolean a = true, b = true, c = true;
 
+    //Constructor
     public Objetos(Colisiones col, int xb, int yb, int x1, int y1, int x2, int y2) {
         this.col = col;
         this.xb = xb;
@@ -22,10 +27,8 @@ public class Objetos {
         this.y1 = y1;
         this.y2 = y2;
     }
-    private Image botiquin, tarjeta1, tarjeta2;
-    private Rectangle bot, tarj1, tarj2;
-    private boolean a = true, b = true, c = true;
 
+    //Métodos Set necesarios
     public void setA(boolean a) {
         this.a = a;
     }
@@ -38,13 +41,16 @@ public class Objetos {
         this.c = c;
     }
 
+    //Este método inicia los objetos que nos encontraremos en el mapa
     public void creaObjetos() throws SlickException {
         botiquin = new Image("./Objetos/spr_adrenalina.png");
         tarjeta1 = new Image("./Objetos/spr_tarjeta.png");
         tarjeta2 = new Image("./Objetos/spr_tarjeta2.png");
     }
 
+    //Este método dibuja las imagenes en el mapa
     public void dibuja() throws SlickException {
+        //Si los booleanos a, b y c están a true si alguno esta a false, ese objeto no se dibuja
         if (a) {
             botiquin.draw(xb, yb);
         }
@@ -72,12 +78,14 @@ public class Objetos {
         }
     }
 
+    //Este método sirve para poner la posicion a los rectangulos que gestionaran las colisiones con el personaje
     public void colObj() {
         bot = new Rectangle(xb, yb, 10, 23);
         tarj1 = new Rectangle(x1, y1, 20, 20);
         tarj2 = new Rectangle(x2, y2, 20, 20);
     }
 
+    //Este método devuelve true si el personaje colisiona con el botiquin
     public boolean botCol() {
         if (col.getRectAnim().intersects(bot)) {
             return true;
@@ -86,6 +94,7 @@ public class Objetos {
         }
     }
 
+    //Este método devuelve true si el personaje colisiona con la tarjeta 1
     public boolean tar1Col() {
         if (col.getRectAnim().intersects(tarj1)) {
             return true;
@@ -94,6 +103,7 @@ public class Objetos {
         }
     }
 
+    //Este método devuelve true si el personaje colisiona con la tarjeta 2
     public boolean tar2Col() {
         if (col.getRectAnim().intersects(tarj2)) {
             return true;
