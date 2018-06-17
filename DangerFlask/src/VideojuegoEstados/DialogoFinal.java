@@ -14,33 +14,47 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class DialogoFinal extends BasicGameState {
 
+    //Atributos
     private Image julian, zacarias;
     private int i = 0;
 
+    //Constructor
     public DialogoFinal() {
     }
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        //Iniciamos las imagenes
         julian = new Image("./juego/julian.png");
         zacarias = new Image("./juego/zacarias.png");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        //Dibujamos las imagenes de los personajes
         g.scale(6f, 6f);
         julian.draw(10, 20);
         zacarias.draw(170, 60);
         g.resetTransform();
+
+        //Dibujamos los dos rectángulos donde estará el diálogo
         g.drawRect(170, 130, 875, 145);
         g.drawRect(140, 370, 875, 145);
+
+        //Escribimos los nombres de los personajes
         g.drawString("JULIAN:", 180, 140);
         g.drawString("ZACARIAS:", 150, 380);
+
+        //Instrucciones a seguir en este estado
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
+
+        //Si pulsamos ESC nos manda al estado 0
         if (container.getInput().isKeyDown(Input.KEY_ESCAPE)) {
             game.enterState(0);
         }
+
+        //Según la i que tengamos mostramos un mensaje u otro
         if (i == 1) {
             g.drawString("¡Llegué! He tenido bastante suerte. Veamos dónde está el suero...", 180, 160);
         }
@@ -72,11 +86,13 @@ public class DialogoFinal extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        //Si pulsamos ENTER aumentamos la variable i para que vaya avanzando el diálogo     
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             i++;
         }
     }
 
+    //Este estado es el estado 6
     @Override
     public int getID() {
         return 6;
