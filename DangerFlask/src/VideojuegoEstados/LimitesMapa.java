@@ -4,11 +4,17 @@ import org.newdawn.slick.tiled.TiledMap;
 
 public class LimitesMapa {
 
+    //Atributos
     private boolean[][] obstaculo;
 
+    //Constructor
     public LimitesMapa() {
     }
 
+    //Este método a partir de las capas del TiledMap del mapa1 crea una matriz en la cual se recorre el TiledMap y si...
+    //...hay algún objeto de esas capas de la pared en la posición correspondiente en la matriz pone un true...
+    //...o un false. Asi detectamos las paredes del mapa para gestionar las colisiones. Por lo tanto, este...
+    //...método devuelve la matriz.
     public boolean[][] crearLimite1(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
@@ -22,6 +28,10 @@ public class LimitesMapa {
         return obstaculo;
     }
 
+    //Este método a partir de las capas del TiledMap del mapa2 crea una matriz en la cual se recorre el TiledMap y si...
+    //...hay algún objeto de esas capas de la pared en la posición correspondiente en la matriz pone un true...
+    //...o un false. Asi detectamos las paredes del mapa para gestionar las colisiones. Por lo tanto, este...
+    //...método devuelve la matriz.
     public boolean[][] crearLimite2(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
@@ -37,6 +47,10 @@ public class LimitesMapa {
         return obstaculo;
     }
 
+    //Este método a partir de las capas del TiledMap del mapa3 crea una matriz en la cual se recorre el TiledMap y si...
+    //...hay algún objeto de esas capas de la pared en la posición correspondiente en la matriz pone un true...
+    //...o un false. Asi detectamos las paredes del mapa para gestionar las colisiones. Por lo tanto, este...
+    //...método devuelve la matriz.
     public boolean[][] crearLimite3(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
@@ -52,6 +66,10 @@ public class LimitesMapa {
         return obstaculo;
     }
 
+    //Este método a partir de las capas del TiledMap del mapa4 crea una matriz en la cual se recorre el TiledMap y si...
+    //...hay algún objeto de esas capas de la pared en la posición correspondiente en la matriz pone un true...
+    //...o un false. Asi detectamos las paredes del mapa para gestionar las colisiones. Por lo tanto, este...
+    //...método devuelve la matriz.
     public boolean[][] crearLimite4(TiledMap mapa) {
         int totalTilesWidth = mapa.getWidth() * 2;
         int totalTilesHeight = mapa.getHeight() * 2;
