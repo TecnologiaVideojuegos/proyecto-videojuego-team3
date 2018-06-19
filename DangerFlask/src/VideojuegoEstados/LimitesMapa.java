@@ -22,7 +22,8 @@ public class LimitesMapa {
         for (int i = 0; i < totalTilesWidth; i++) {
             for (int j = 0; j < totalTilesHeight; j++) {
                 obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0));
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0));
             }
         }
         return obstaculo;
@@ -39,8 +40,10 @@ public class LimitesMapa {
         for (int i = 0; i < totalTilesWidth; i++) {
             for (int j = 0; j < totalTilesHeight; j++) {
                 obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra1")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("extra1")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de Patrones 1")) != 0));
             }
         }
@@ -58,7 +61,8 @@ public class LimitesMapa {
         for (int i = 0; i < totalTilesWidth; i++) {
             for (int j = 0; j < totalTilesHeight; j++) {
                 obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("base_pared")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 5")) != 0));
             }
@@ -77,7 +81,8 @@ public class LimitesMapa {
         for (int i = 0; i < totalTilesWidth; i++) {
             for (int j = 0; j < totalTilesHeight; j++) {
                 obstaculo[i][j] = ((mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 4")) != 0)
-                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0) || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 3")) != 0)
+                        || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 2")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de Patrones 1")) != 0)
                         || (mapa.getTileId(i / 2, j / 2, mapa.getLayerIndex("Capa de patrones 5")) != 0));
             }

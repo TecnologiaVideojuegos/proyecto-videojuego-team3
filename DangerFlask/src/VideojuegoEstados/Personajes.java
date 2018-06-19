@@ -11,14 +11,18 @@ public class Personajes {
 
     //Atributos
     //Sprites del personaje y de los enemigos segun su movimiento
-    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteEnemD, spriteEnemI, spriteEnemAr, spriteEnemAb;
+    private SpriteSheet spriteD, spriteI, spriteAr, spriteAb, spriteEnemD,
+            spriteEnemI, spriteEnemAr, spriteEnemAb;
     //Animaciones del personaje y de los enemigos segun su movimiento
-    private Animation animD, animI, animAr, animAb, animEnemD, animEnemI, animEnemAr, animEnemAb;
+    private Animation animD, animI, animAr, animAb, animEnemD, animEnemI,
+            animEnemAr, animEnemAb;
     //Booleans que detectan la direccion del movimiento del personaje
-    private boolean derecha = true, arriba = false, izquierda = false, abajo = false;
-    //Booleans que detectan la direccion del movimiento de los enemigos, si es true, es que la...
-    //...direccion es la inicial y si esta a false es la contraria.
-    private boolean enem1 = true, enem2 = true, enem3 = true, enem4 = true, enem5 = true, enem6 = true;
+    private boolean derecha = true, arriba = false, izquierda = false,
+            abajo = false;
+    //Booleans que detectan la direccion del movimiento de los enemigos, si es...
+    //...true, es que la direccion es la inicial y si esta a false es la contraria.
+    private boolean enem1 = true, enem2 = true, enem3 = true, enem4 = true,
+            enem5 = true, enem6 = true;
     //Variable i
     private int i = 6;
     //Coordenadas
@@ -174,7 +178,8 @@ public class Personajes {
             animD.start();
             //desplazamos el personaje en este caso hacia la derecha, aumentamos la x
             x_ += 100 * (float) delta / 1000;
-            //Finalmente devolvemos la i que es un número que corresponde a una dirección, en este caso la derecha, el 6
+            //Finalmente devolvemos la i que es un número que corresponde a una dirección, en este caso...
+            //...la derecha, el 6
             i = 6;
             return i;
         } else if (container.getInput().isKeyDown(Input.KEY_LEFT) && dentro) {
@@ -569,8 +574,9 @@ public class Personajes {
 
     //Este método devuelve true si el personaje colisiona con algún enemigo
     public boolean muere() {
-        if (col.getRectAnim().intersects(rectEnem1) || col.getRectAnim().intersects(rectEnem2) || col.getRectAnim().intersects(rectEnem3)
-                || col.getRectAnim().intersects(rectEnem4) || col.getRectAnim().intersects(rectEnem5) || col.getRectAnim().intersects(rectEnem6)) {
+        if (col.getRectAnim().intersects(rectEnem1) || col.getRectAnim().intersects(rectEnem2)
+                || col.getRectAnim().intersects(rectEnem3) || col.getRectAnim().intersects(rectEnem4)
+                || col.getRectAnim().intersects(rectEnem5) || col.getRectAnim().intersects(rectEnem6)) {
             return true;
         } else {
             return false;

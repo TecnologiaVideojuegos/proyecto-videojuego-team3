@@ -153,37 +153,6 @@ public class Mapa4 extends BasicGameState {
         //Actualiza las coordenadas de los enemigos para las colisiones
         personaje.actualizarEnem();
 
-        //Cuando el personaje muere...
-        if (personaje.muere()) {
-            //Si el sonido esta activado suena el sonido
-            if (sonido.isSonidoOn()) {
-                sonido.getZacariasDead().play();
-            }
-            //Devuelve las coordenadas del personaje a las iniciales
-            x = 34;
-            y = 275;
-            //Reinicia el estado de los objetos del mapa
-            obj.setB(true);
-            obj.setC(true);
-            //Reinicia las tarjetas recogidas
-            col.setTarjeta4(0);
-            //Resta una vida al personaje
-            vidas.setVidas(vidas.getVidas() - 1);
-            //Si el número de vidas es 0 entonces para la música y le manda al estado 7, GAME OVER
-            if (vidas.getVidas() == 0) {
-                game.enterState(7, entra, sale);
-            }
-        }
-
-        //Si el personaje atraviesa el Mapa4 pasa al estado 6 con el diálogo final
-        if (col.cambiarMapa4()) {
-            zacariastheme.stop();
-            if (sonido.isSonidoOn()) {
-                sonido.getPuerta().play();
-            }
-            game.enterState(6);
-        }
-
         //Si el personaje coge el botiquin y no tiene todas las vidas aumenta una vida...
         //... y elimina el botiquin del mapa
         if (obj.botCol() && vidas.getVidas() < 6) {
@@ -215,6 +184,37 @@ public class Mapa4 extends BasicGameState {
         //Detecta si el jugador clickea en el mapa para activar o desactivar la música
         if (container.getInput().isMousePressed(0)) {
             sonido.click(container, zacariastheme);
+        }
+
+        //Cuando el personaje muere...
+        if (personaje.muere()) {
+            //Si el sonido esta activado suena el sonido
+            if (sonido.isSonidoOn()) {
+                sonido.getZacariasDead().play();
+            }
+            //Devuelve las coordenadas del personaje a las iniciales
+            x = 34;
+            y = 275;
+            //Reinicia el estado de los objetos del mapa
+            obj.setB(true);
+            obj.setC(true);
+            //Reinicia las tarjetas recogidas
+            col.setTarjeta4(0);
+            //Resta una vida al personaje
+            vidas.setVidas(vidas.getVidas() - 1);
+            //Si el número de vidas es 0 entonces para la música y le manda al estado 7, GAME OVER
+            if (vidas.getVidas() == 0) {
+                game.enterState(7, entra, sale);
+            }
+        }
+
+        //Si el personaje atraviesa el Mapa4 pasa al estado 6 con el diálogo final
+        if (col.cambiarMapa4()) {
+            zacariastheme.stop();
+            if (sonido.isSonidoOn()) {
+                sonido.getPuerta().play();
+            }
+            game.enterState(6);
         }
     }
 

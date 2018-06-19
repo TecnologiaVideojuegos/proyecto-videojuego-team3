@@ -49,6 +49,9 @@ public class DialogoFinal extends BasicGameState {
         g.drawString("Pulse ENTER para avanzar", 10, 10);
         g.drawString("Pulse ESC para saltar el diálogo", 10, 40);
 
+        //Créditos
+        g.drawString("Jorge Berbel Ruiz     -     Brianda Cabrera Riaza     -     Rafael Maderuelo Escolar     -     Sergio Sanz Sacristán", 60, 620);
+
         //Según la i que tengamos mostramos un mensaje u otro
         if (i == 1) {
             g.drawString("¡Llegué! He tenido bastante suerte. Veamos dónde está el suero...", 180, 160);
