@@ -18,7 +18,7 @@ public class Colisiones {
         this.y_ = y;
     }
 
-    //Gets y Sets necesarios
+    //Métodos Get y Set necesarios
     public int getTarjeta1() {
         return tarjeta1;
     }

@@ -24,20 +24,19 @@ public class GameOver extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
         //Iniciamos la imagen
-        gameover = new Image("./Botones/gameover.jpg");
+        gameover = new Image("./Botones/GameOver.png");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         //Dibujamos la imagen
-        gameover.draw(41, 0);
+        gameover.draw(0, 0);
 
         //Instrucciones a seguir en este estado
         g.drawString("Pulse ESC para volver al menú principal", 10, 10);
-        
+
         //Créditos
-        g.drawString("Jorge Berbel Ruiz     -     Brianda Cabrera Riaza     -     Rafael Maderuelo Escolar     -     Sergio Sanz Sacristán", 60, 550);
-        g.drawString("Dramalama Games", 10, 620);
+        g.drawString("Jorge Berbel Ruiz     -     Brianda Cabrera Riaza     -     Rafael Maderuelo Escolar     -     Sergio Sanz Sacristán", 60, 620);
     }
 
     @Override
