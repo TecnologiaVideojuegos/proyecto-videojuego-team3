@@ -78,7 +78,7 @@ public class Personajes {
         animI = new Animation(spriteI, 100);
         spriteAr = new SpriteSheet("./Personajes/spr_zacarias_arriba.png", 17, 26);
         animAr = new Animation(spriteAr, 100);
-        spriteAb = new SpriteSheet("./Personajes/spr_zacarias_abajo.png", 17, 27);
+        spriteAb = new SpriteSheet("./Personajes/spr_zacarias_abajo.png", 17, 26);
         animAb = new Animation(spriteAb, 100);
     }
 

@@ -32,7 +32,7 @@ public class Mapa4 extends BasicGameState {
     private final LimitesMapa limiteMapa = new LimitesMapa();
     private final Vidas vidas;
     //Iniciamos la clase Objetos con las coordenadas de los objetos
-    private final Objetos obj = new Objetos(col, 1152, 576, 240, 384, 1024, 176);
+    private final Objetos obj = new Objetos(col, 624, 176, 240, 384, 1024, 176);
     private final Sonido sonido;
     private final FadeInTransition entra = new FadeInTransition();
     private final FadeOutTransition sale = new FadeOutTransition();
